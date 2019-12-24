@@ -1,0 +1,1 @@
+{"rsync":{},"virtualbox":{"/vagrant":{"type":"virtualbox","guestpath":"/vagrant","hostpath":"C:/vagrant/app_proofreading","disabled":false,"__vagrantfile":true}}}
