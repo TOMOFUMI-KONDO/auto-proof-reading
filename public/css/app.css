@@ -1,4 +1,8 @@
-.replaced {
-  font-weight: bold;
+#before .replaced {
+  color: #0000ff;
+}
+
+#after .replaced {
+  color: #ff0000;
 }
 

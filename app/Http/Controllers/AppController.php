@@ -8,16 +8,19 @@ class AppController extends Controller
 {
     public function index() {
         $data = [
-            'sentence' => ''
+            'before' => '',
+            'after' => '',
         ];
         return view('app.index', $data);
     }
 
     public function post(Request $request) {
         $sentence = $request->sentence;
-        $sentence = str_replace('れる', '<span class="replaced">られる</span>', $sentence);
+        $before = str_replace('れる', '<span class="replaced">れる</span>', $sentence);
+        $after = str_replace('れる', '<span class="replaced">られる</span>', $sentence);
         $data = [
-            'sentence' => $sentence
+            'before' => $before,
+            'after' => $after,
         ];
         return view('app.index', $data);
     }
