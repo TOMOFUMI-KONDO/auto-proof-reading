@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Middleware\AppMiddleware;
+
+//Route::get('/', function () {
+////    return view('welcome');
+//});
+
+Route::get('/', 'AppController@index');
+Route::post('/', 'AppController@post');
