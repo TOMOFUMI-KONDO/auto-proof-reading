@@ -1,1 +1,53 @@
-//
+$dark-color: #000000;
+@mixin print_area($font_color: $dark-color) {
+    border: 1px dashed $dark-color;
+    .replaced {
+        color: $font_color;
+    }
+}
+/**
+共通の処理
+ */
+.button {
+    display: block;
+    width: 100px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    background-color: #cccccc;
+    padding: 10px;
+}
+
+/**
+個別の処理
+ */
+#conditions {
+    p {
+        &:nth-child(3), &:nth-child(4) {
+            display: inline-block;
+            width: 160px;
+            text-align: center;
+        }
+
+    }
+
+    label {
+        &:nth-child(odd) {
+            &:after {
+                content: '\A';
+                white-space: pre;
+            }
+        }
+
+        input {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+#before_rep {
+    @include print_area(#0000ff);
+}
+
+#after_rep {
+    @include print_area(#ff0000);
+}

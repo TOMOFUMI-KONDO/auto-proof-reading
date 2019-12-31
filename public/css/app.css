@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/**
+共通の処理
+ */
+
+.button {
+  display: block;
+  width: 100px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  background-color: #cccccc;
+  padding: 10px;
+}
+
+/**
+個別の処理
+ */
+
+#conditions p:nth-child(3),
+#conditions p:nth-child(4) {
+  display: inline-block;
+  width: 160px;
+  text-align: center;
+}
+
+#conditions label:nth-child(odd):after {
+  content: '\A';
+  white-space: pre;
+}
+
+#conditions label input {
+  margin-bottom: 5px;
+}
+
+#before_rep {
+  border: 1px dashed #000000;
+}
+
+#before_rep .replaced {
+  color: #0000ff;
+}
+
+#after_rep {
+  border: 1px dashed #000000;
+}
+
+#after_rep .replaced {
+  color: #ff0000;
+}
+

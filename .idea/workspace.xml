@@ -2,19 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0098ffdd-36cd-4a60-8e1f-6409d8abc2e0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/auto-proof-reading.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/auto-proof-reading.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/head.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,6 +121,15 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/alrik11es/cowsayphp" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VfE9rKT9MmvYRH5x6r8P3b12Pn" />
@@ -118,9 +140,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Nodist/bin/node_modules/sass/sass.js" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -128,7 +153,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -159,6 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1577635600188</updated>
       <workItem from="1577635602280" duration="2921000" />
+      <workItem from="1577757989038" duration="24931000" />
     </task>
     <servers />
   </component>
@@ -166,21 +192,65 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#File_Watchers" timestamp="1577768561553">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#File_Watchers/0.0.1536.824@0.0.1536.824" timestamp="1577768561553" />
     <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577664740626">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1577664740626" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1577635678970">
+    <state x="548" y="118" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1577767580475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1577635678970" />
-    <state x="277" y="55" key="SettingsEditor" timestamp="1577751925974">
+    <state x="548" y="118" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1577767580475" />
+    <state x="395" y="7" key="CommitChangelistDialog2" timestamp="1577752705659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1577751925974" />
-    <state x="0" y="0" width="738" height="824" key="find.popup" timestamp="1577743947232">
+    <state x="395" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1577752705659" />
+    <state x="405" y="191" width="725" height="628" key="EditFileWatcherDialog" timestamp="1577768967570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="0" width="738" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1577743947232" />
+    <state x="405" y="191" width="725" height="628" key="EditFileWatcherDialog/0.0.1536.824@0.0.1536.824" timestamp="1577768967570" />
+    <state x="548" y="168" key="FileChooserDialogImpl" timestamp="1577768934731">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577768934731" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1577768567783">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577768567783" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1577768567783">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1577768567783" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1577768567782">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1577768567782" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1577768567783">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1577768567783" />
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1577759456487">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1577759456487" />
+    <state x="288" y="10" key="SettingsEditor" timestamp="1577768972993">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="288" y="10" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1577768972993" />
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1577757996082">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1577757996082" />
+    <state x="421" y="32" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577760605856">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="421" y="32" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1577760605856" />
+    <state x="0" y="0" width="738" height="824" key="find.popup" timestamp="1577766375954">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="0" width="738" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1577766375954" />
   </component>
 </project>
