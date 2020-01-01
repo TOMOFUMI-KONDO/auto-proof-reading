@@ -11,8 +11,6 @@
 |
 */
 
-use App\Http\Middleware\AppMiddleware;
-
 //Route::get('/', function () {
 ////    return view('welcome');
 //});

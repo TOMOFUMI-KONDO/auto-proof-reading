@@ -9,7 +9,6 @@ class AppController extends Controller
     const CONDITION_NUMBER = 10;
 
     public function index() {
-        var_dump(app('env'));
         $data = [
             'condition_number' => self::CONDITION_NUMBER,
             'before_rep' => '校正前',
