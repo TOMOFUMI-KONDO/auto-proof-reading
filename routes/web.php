@@ -15,5 +15,13 @@
 ////    return view('welcome');
 //});
 
+/**
+ * トップページ
+ */
 Route::get('/', 'AppController@index');
 Route::post('/', 'AppController@post');
+
+/**
+ * テスト用ページ
+ */
+Route::get('test', 'TestController');
