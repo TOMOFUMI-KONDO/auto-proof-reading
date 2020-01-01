@@ -5,36 +5,39 @@
  */
 
 .button {
-  display: block;
-  width: 100px;
+  display: inline-block;
   cursor: pointer;
   border: 1px solid #000000;
   background-color: #cccccc;
   padding: 10px;
 }
 
+.button:hover {
+  opacity: 0.7;
+}
+
 /**
 個別の処理
  */
 
-#conditions p:nth-child(3),
-#conditions p:nth-child(4) {
+#conditions .description div:last-child p {
   display: inline-block;
   width: 160px;
   text-align: center;
 }
 
-#conditions label:nth-child(odd):after {
+#conditions .after_str:after {
   content: '\A';
   white-space: pre;
 }
 
 #conditions label input {
-  margin-bottom: 5px;
+  margin: 0 5px 10px;
 }
 
 #before_rep {
   border: 1px dashed #000000;
+  color: #000000;
 }
 
 #before_rep .replaced {
@@ -43,6 +46,7 @@
 
 #after_rep {
   border: 1px dashed #000000;
+  color: #000000;
 }
 
 #after_rep .replaced {
