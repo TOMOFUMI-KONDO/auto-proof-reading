@@ -21,7 +21,9 @@ class AppController extends Controller
     }
 
     public function post(Request $request) {
-//        self::$condition_number = $_POST['condition_number'] ?? 5;
+//        var_dump($_POST['condition_number']);
+        self::$condition_number = $_POST['condition_number'] ?? 10;
+        print self::$condition_number;
         self::$condition_number = 10;
         $sentence = $request->sentence;
         $before_rep = '';

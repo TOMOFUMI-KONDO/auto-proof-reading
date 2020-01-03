@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
 @section('head')
-{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
-{{--    <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>--}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
     @component('components.head')
         @slot('title')
             auto-proof-reading
@@ -19,7 +19,7 @@
 @section('header')
     @component('components.header')
         @slot('h1')
-            auto-proof-reading
+            自動校正サービス
         @endslot
     @endcomponent
 @endsection
@@ -46,7 +46,7 @@
                 <label class="before_str"><input type="text" name="before_str{{$i}}" value="{{ old('before_str' . $i) }}"></label>
                 <label class="after_str"><input type="text" name="after_str{{$i}}" value="{{ old('after_str' . $i) }}"></label>
             @endfor
-{{--            <p id="add" class="button">入力ボックス追加</p>--}}
+            <p id="add" class="button">入力ボックス追加</p>
         </div>
         <input type="submit" value="校正する">
     </form>

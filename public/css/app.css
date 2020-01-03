@@ -35,6 +35,11 @@
   margin: 0 5px 10px;
 }
 
+#conditions #add {
+  display: block;
+  width: 130px;
+}
+
 #before_rep {
   border: 1px dashed #000000;
   color: #000000;
