@@ -5,8 +5,10 @@
 @if(app('env') === 'local')
     <link rel="stylesheet" href="{{ asset('css') }}/{{$css}}.css">
     <script type="text/javascript" src="{{ asset('js') }}/{{$js}}.js"></script>
+    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
 @endif
 @if(app('env') === 'production')
     <link rel="stylesheet" href="{{ secure_asset('css') }}/{{$css}}.css">
     <script type="text/javascript" src="{{ secure_asset('js') }}/{{$js}}.js"></script>
+    <script src="{{ secure_asset('js/jquery.cookie.js') }}"></script>
 @endif
