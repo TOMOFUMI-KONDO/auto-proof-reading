@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0098ffdd-36cd-4a60-8e1f-6409d8abc2e0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.heroku" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +184,7 @@
       <workItem from="1578013037017" duration="1989000" />
       <workItem from="1578017171244" duration="239000" />
       <workItem from="1578030945760" duration="5102000" />
-      <workItem from="1578038134014" duration="1904000" />
+      <workItem from="1578038134014" duration="2209000" />
     </task>
     <servers />
   </component>

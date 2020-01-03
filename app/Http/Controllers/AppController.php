@@ -19,7 +19,10 @@ class AppController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        self::$condition_number = $_COOKIE['condition_number'] > 0 ? $_COOKIE['condition_number'] : 1;
+        self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
+        if(self::$condition_number < 1) {
+            self::$condition_number = 5;
+        }
         $data = [
             'condition_number' => self::$condition_number,
             'before_rep' => '校正前',
@@ -34,7 +37,10 @@ class AppController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function post(Request $request) {
-        self::$condition_number = $_COOKIE['condition_number'] > 0 ? $_COOKIE['condition_number'] : 1;
+        self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
+        if(self::$condition_number < 1) {
+            self::$condition_number = 5;
+        }
         $sentence = $request->sentence;
         $before_rep = '';
         $after_rep = '';
