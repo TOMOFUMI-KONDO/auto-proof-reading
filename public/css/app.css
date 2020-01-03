@@ -10,6 +10,7 @@
   border: 1px solid #000000;
   background-color: #cccccc;
   padding: 10px;
+  text-align: center;
 }
 
 .button:hover {
@@ -26,18 +27,18 @@
   text-align: center;
 }
 
-#conditions .after_str:after {
+#conditions #inputs .after_str:after {
   content: '\A';
   white-space: pre;
 }
 
-#conditions label input {
+#conditions #inputs label input {
   margin: 0 5px 10px;
 }
 
-#conditions #add {
-  display: block;
-  width: 130px;
+#conditions #add,
+#conditions #delete {
+  width: 150px;
 }
 
 #before_rep {

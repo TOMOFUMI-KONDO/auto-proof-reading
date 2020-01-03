@@ -41,15 +41,17 @@
                     <p>校正後</p>
                 </div>
             </div>
-            @for ($i = 0; $i < $condition_number; $i++)
-                <label class="before_str"><input type="text" name="before_str{{$i}}" value="{{ old('before_str' . $i) }}"></label>
-                <label class="after_str"><input type="text" name="after_str{{$i}}" value="{{ old('after_str' . $i) }}"></label>
-            @endfor
+            <div id="inputs">
+                @for ($i = 0; $i < $condition_number; $i++)
+                    <label class="before_str">{{ $i }}<input type="text" name="before_str{{ $i}}" value="{{ old('before_str' . $i) }}"></label>
+                    <label class="after_str"><input type="text" name="after_str{{ $i}}" value="{{ old('after_str' . $i) }}"></label>
+                @endfor
+            </div>
             <p id="add" class="button">入力ボックス追加</p>
+            <p id="delete" class="button">入力ボックス削除</p>
         </div>
         <input type="submit" value="校正する">
     </form>
-
     <p>ここに校正前の文章が出ます。</p>
     <p id="before_rep">{!! nl2br($before_rep) !!}</p>
     <p>ここに校正後の文章が出ます。</p>
