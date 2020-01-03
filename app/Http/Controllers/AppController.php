@@ -54,8 +54,8 @@ class AppController extends Controller
 
         $data = [
             'condition_number' => self::$condition_number,
-            'before_rep' => $before_rep,
-            'after_rep' => $after_rep,
+            'before_rep' => $before_rep !== '' ? $before_rep : '校正前',
+            'after_rep' => $after_rep !== '' ? $after_rep : '校正後',
         ];
         $request->flash();
 
