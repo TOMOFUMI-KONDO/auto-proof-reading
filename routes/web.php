@@ -24,6 +24,6 @@ Route::post('/', 'AppController@post');
 /**
  * テスト用ページ
  */
-//if(app('env') === 'local') {
-//    Route::get('test', 'TestController');
-//}
+if(app('env') === 'local') {
+    Route::get('test', 'TestController');
+}
