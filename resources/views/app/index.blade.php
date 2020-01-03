@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('head')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
     @component('components.head')
         @slot('title')

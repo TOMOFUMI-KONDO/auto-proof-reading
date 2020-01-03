@@ -4,13 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class AppController
+ * @package App\Http\Controllers
+ */
 class AppController extends Controller
 {
+    /**
+     * @var
+     */
     private static $condition_number;
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index() {
-//        self::$condition_number = $_POST['condition_number'] ?? 5;
-        self::$condition_number = 10;
+        self::$condition_number = $_COOKIE['condition_number'] ?? 5;
         $data = [
             'condition_number' => self::$condition_number,
             'before_rep' => '校正前',
@@ -20,11 +29,12 @@ class AppController extends Controller
         return view('app.index', $data);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function post(Request $request) {
-//        var_dump($_POST['condition_number']);
-        self::$condition_number = $_POST['condition_number'] ?? 10;
-        print self::$condition_number;
-        self::$condition_number = 10;
+        self::$condition_number = $_COOKIE['condition_number'] ?? 5;
         $sentence = $request->sentence;
         $before_rep = '';
         $after_rep = '';
