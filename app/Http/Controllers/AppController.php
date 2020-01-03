@@ -4,24 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * Class AppController
+ * @package App\Http\Controllers
+ */
 class AppController extends Controller
 {
-    const CONDITION_NUMBER = 10;
+    /**
+     * @var
+     */
+    private static $condition_number;
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index() {
+        self::$condition_number = $_COOKIE['condition_number'] > 0 ? $_COOKIE['condition_number'] : 1;
         $data = [
-            'condition_number' => self::CONDITION_NUMBER,
+            'condition_number' => self::$condition_number,
             'before_rep' => '校正前',
             'after_rep' => '校正後',
         ];
+
         return view('app.index', $data);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function post(Request $request) {
+        self::$condition_number = $_COOKIE['condition_number'] > 0 ? $_COOKIE['condition_number'] : 1;
         $sentence = $request->sentence;
         $before_rep = '';
         $after_rep = '';
-        for($i = 0; $i < self::CONDITION_NUMBER; $i++) {
+
+        for($i = 0; $i < self::$condition_number; $i++) {
             $before_str = $request->input("before_str" . $i);
             $after_str = $request->input("after_str" . $i);
             if($i === 0) {
@@ -35,11 +53,12 @@ class AppController extends Controller
         }
 
         $data = [
-            'condition_number' => self::CONDITION_NUMBER,
-            'before_rep' => $before_rep,
-            'after_rep' => $after_rep,
+            'condition_number' => self::$condition_number,
+            'before_rep' => $before_rep !== '' ? $before_rep : '校正前',
+            'after_rep' => $after_rep !== '' ? $after_rep : '校正後',
         ];
         $request->flash();
+
         return view('app.index', $data);
     }
 }

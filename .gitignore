@@ -12,3 +12,8 @@ npm-debug.log
 yarn-error.log
 .vagrant/
 .idea/workspace.xml
+app/Http/Controllers/TestController.php
+resources/views/test/index.blade.php
+public/js/test.js
+resources/sass/test.scss
+public/css/test.css
