@@ -24,12 +24,13 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="/">
+    <form method="POST" action="/" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <div id="sentence">
-            <p>校正する文章を入力してください。</p>
-            <label><textarea name="sentence" placeholder="ここに入力" cols="100px" rows="10px">{{ old('sentence') }}</textarea></label>
-        </div>
+        <lavel><input type="file" id="file" name="file"></lavel>
+{{--        <div id="sentence">--}}
+{{--            <p>校正する文章を入力してください。</p>--}}
+{{--            <label><textarea name="sentence" placeholder="ここに入力" cols="100px" rows="10px">{{ old('sentence') }}</textarea></label>--}}
+{{--        </div>--}}
         <div id="conditions">
             <div class="description">
                 <p>校正したい文字を入力してください。</p>

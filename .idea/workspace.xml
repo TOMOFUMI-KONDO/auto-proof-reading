@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0098ffdd-36cd-4a60-8e1f-6409d8abc2e0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +189,8 @@
       <workItem from="1578030945760" duration="5102000" />
       <workItem from="1578038134014" duration="2209000" />
       <workItem from="1578196682204" duration="44000" />
-      <workItem from="1578310099485" duration="300000" />
+      <workItem from="1578310099485" duration="2179000" />
+      <workItem from="1578312294700" duration="6009000" />
     </task>
     <servers />
   </component>
@@ -198,10 +202,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#File_Watchers/0.0.1536.824@0.0.1536.824" timestamp="1577768561553" />
-    <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577664740626">
+    <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578311669315">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1577664740626" />
+    <state x="535" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1578311669315" />
     <state x="548" y="118" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1577767580475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -242,10 +246,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="288" y="10" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1577797125299" />
-    <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1578310181799">
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1578312295497">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1578310181799" />
+    <state x="465" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1578312295497" />
     <state x="421" y="32" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577760605856">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

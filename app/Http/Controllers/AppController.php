@@ -41,7 +41,8 @@ class AppController extends Controller
         if(self::$condition_number < 1) {
             self::$condition_number = 5;
         }
-        $sentence = $request->sentence;
+//        $sentence = $request->sentence;
+        $sentence = file_get_contents($request->file('file')->getRealPath());
         $before_rep = '';
         $after_rep = '';
 
