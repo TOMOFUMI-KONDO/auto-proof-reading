@@ -24,6 +24,8 @@ class AppController extends Controller
             self::$condition_number = 5;
         }
         $data = [
+            'hide_upload_file' => '',
+            'hide_sentence' => 'hide',
             'condition_number' => self::$condition_number,
             'before_rep' => '校正前',
             'after_rep' => '校正後',
@@ -37,12 +39,27 @@ class AppController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function post(Request $request) {
+        if ($request->submit_type === 'file') {
+            $hide_upload_file = '';
+            $hide_sentence = 'hide';
+        }
+        else if ($request->submit_type === 'text') {
+            $hide_upload_file = 'hide';
+            $hide_sentence = '';
+        }
+
         self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
         if(self::$condition_number < 1) {
             self::$condition_number = 5;
         }
-//        $sentence = $request->sentence;
-        $sentence = file_get_contents($request->file('file')->getRealPath());
+
+        if ($request->file('file')) {
+            $sentence = file_get_contents($request->file('file')->getRealPath());
+        }
+        else {
+            $sentence = $request->sentence;
+        }
+
         $before_rep = '';
         $after_rep = '';
 
@@ -60,6 +77,8 @@ class AppController extends Controller
         }
 
         $data = [
+            'hide_upload_file' => $hide_upload_file,
+            'hide_sentence' => $hide_sentence,
             'condition_number' => self::$condition_number,
             'before_rep' => $before_rep !== '' ? $before_rep : '校正前',
             'after_rep' => $after_rep !== '' ? $after_rep : '校正後',

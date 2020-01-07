@@ -26,11 +26,20 @@
 @section('content')
     <form method="POST" action="/" enctype="multipart/form-data">
         {{ csrf_field() }}
-        <lavel><input type="file" id="file" name="file"></lavel>
-{{--        <div id="sentence">--}}
-{{--            <p>校正する文章を入力してください。</p>--}}
-{{--            <label><textarea name="sentence" placeholder="ここに入力" cols="100px" rows="10px">{{ old('sentence') }}</textarea></label>--}}
-{{--        </div>--}}
+        <div id="submit_type">
+            {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
+            {{ Form::label('submit_type_file', 'ファイルをアップロードする') }}
+            {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text'])}}
+            {{ Form::label('submit_type_text', 'テキストを入力する') }}
+        </div>
+        <div id="upload_file" class="{{ $hide_upload_file }}">
+            <p>校正するテキストファイルをアップロードしてください。</p>
+            <label><input type="file" name="file"></label>
+        </div>
+        <div id="sentence" class="{{ $hide_sentence }}">
+            <p>校正する文章を入力してください。</p>
+            <label><textarea name="sentence" placeholder="ここに入力" cols="100px" rows="10px">{{ old('sentence') }}</textarea></label>
+        </div>
         <div id="conditions">
             <div class="description">
                 <p>校正したい文字を入力してください。</p>

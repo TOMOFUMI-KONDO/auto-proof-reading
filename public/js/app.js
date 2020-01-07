@@ -1,5 +1,20 @@
 $(document).ready(function() {
     /**
+     * 校正形式（ファイルorテキスト）の変更をする処理
+     */
+    $('#submit_type input').on('click', function () {
+        var submit_type = $('input[name="submit_type"]:checked').val();
+        if (submit_type === 'file') {
+            $('#upload_file').removeClass('hide');
+            $('#sentence').addClass('hide');
+        }
+        else if (submit_type === 'text') {
+            $('#upload_file').addClass('hide');
+            $('#sentence').removeClass('hide');
+        }
+    });
+
+    /**
      * 校正条件の入力を全消去する処理
      */
    $('#erase').on('click', function() {
