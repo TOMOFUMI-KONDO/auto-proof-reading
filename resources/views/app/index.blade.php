@@ -34,11 +34,11 @@
         </div>
         <div id="upload_file" class="{{ $hide_upload_file }}">
             <p>校正するテキストファイルをアップロードしてください。</p>
-            <label><input type="file" name="file"></label>
+            {{ Form::file('file', ['id' => 'file']) }}
         </div>
         <div id="sentence" class="{{ $hide_sentence }}">
             <p>校正する文章を入力してください。</p>
-            <label><textarea name="sentence" placeholder="ここに入力" cols="100px" rows="10px">{{ old('sentence') }}</textarea></label>
+            {{ Form::textarea('sentence', old('sentence' ), ['placeholder' => 'ここに入力', 'cols' => '100px', 'rows' => '10px']) }}
         </div>
         <div id="conditions">
             <div class="description">
@@ -52,15 +52,17 @@
                 </div>
             </div>
             <div id="inputs">
-                @for ($i = 0; $i < $condition_number; $i++)
-                    <label class="before_str">{{ $i }}<input type="text" name="before_str{{ $i}}" value="{{ old('before_str' . $i) }}"></label>
-                    <label class="after_str"><input type="text" name="after_str{{ $i}}" value="{{ old('after_str' . $i) }}"></label>
+                @for ($i = 1; $i <= $condition_number; $i++)
+                    <p>{{ $i }}</p>
+                    {{ Form::text("before_str$i", old("before_str$i")) }}
+                    {{ Form::text("after_str$i", old("after_str$i")) }}
+                    <br />
                 @endfor
             </div>
             <p id="add" class="button">入力ボックス追加</p>
             <p id="delete" class="button">入力ボックス削除</p>
         </div>
-        <input type="submit" value="校正する">
+        {{ Form::submit('校正する') }}
     </form>
     <p>ここに校正前の文章が出ます。</p>
     <p id="before_rep">{!! nl2br($before_rep) !!}</p>

@@ -31,13 +31,9 @@
   text-align: center;
 }
 
-#conditions #inputs .after_str:after {
-  content: '\A';
-  white-space: pre;
-}
-
-#conditions #inputs label input {
-  margin: 0 5px 10px;
+#conditions #inputs p {
+  display: inline-block;
+  margin: 5px 3px 5px 0;
 }
 
 #conditions #add,

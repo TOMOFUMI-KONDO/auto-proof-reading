@@ -1,6 +1,14 @@
 $(document).ready(function() {
     /**
-     * 校正形式（ファイルorテキスト）の変更をする処理
+     * ページリロード時にラジオボタンの値と校正形式（ファイルorテキスト）の表示が異なるバグを防ぐ処理
+      */
+    if ($('#submit_type_text').prop('checked') === true) {
+        $('#upload_file').addClass('hide');
+        $('#sentence').removeClass('hide');
+    }
+
+    /**
+     * ラジオボタンで校正形式（ファイルorテキスト）の変更をする処理
      */
     $('#submit_type input').on('click', function () {
         var submit_type = $('input[name="submit_type"]:checked').val();
@@ -18,29 +26,35 @@ $(document).ready(function() {
      * 校正条件の入力を全消去する処理
      */
    $('#erase').on('click', function() {
-       $('#conditions input').val('');
+       $('#inputs input').val('');
    });
+
     /**
-     *校正条件の入力ボックスを増やす処理
+     *校正条件の入力ボックスを増減する処理
      */
     $('#add').on('click', function () {
+        condition_number++;
+
         $(
-            '<label>' + condition_number +'<input type="text" name="before_str' + condition_number + '" value=""></label>' +
-            '<label><input type="text" name="after_str' + condition_number +  '" value=""></label>'
+            '<p style="margin-right: 9px; ">' + condition_number + ' </p>' +
+            '<input name="before_str' + condition_number + '" type="text" value="" style="margin-right: 5px; "></label>' +
+            '<input name="after_str' + condition_number + '" type="text" value=""></label>' +
+            '<br />'
         ).appendTo('#inputs');
 
-        $('input[name="before_str' + condition_number +'"]').parent().addClass('before_str');
-        $('input[name="after_str' + condition_number +'"]').parent().addClass('after_str');
-
-        $.cookie('condition_number', ++condition_number);
-        console.log('condition_numberを' + condition_number + 'に変更しました。');
+        $.cookie('condition_number', condition_number);
+        console.log('校正条件の数を' + condition_number + 'に変更しました。');
     });
 
     $('#delete').on('click', function() {
-        $('#inputs label:last-child').remove();
-        $('#inputs label:last-child').remove();
+        condition_number--;
 
-        $.cookie('condition_number', --condition_number);
-        console.log('condition_numberを' + condition_number + 'に変更しました。');
+        $('#inputs p:last').remove();
+        $('#inputs input:last').remove();
+        $('#inputs input:last').remove();
+        $('#inputs br:last').remove();
+
+        $.cookie('condition_number', condition_number);
+        console.log('校正条件の数を' + condition_number + 'に変更しました。');
     });
 });

@@ -11,18 +11,14 @@ use Illuminate\Http\Request;
 class AppController extends Controller
 {
     /**
-     * @var
-     */
-    private static $condition_number;
-
-    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
-        if(self::$condition_number < 1) {
-            self::$condition_number = 5;
-        }
+        /**
+         * 前回の校正条件の数を引継ぎ
+         */
+        self::checkCondition();
+
         $data = [
             'hide_upload_file' => '',
             'hide_sentence' => 'hide',
@@ -39,6 +35,9 @@ class AppController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function post(Request $request) {
+        /**
+         * 校正形式の切り替え（ファイルorテキスト）
+         */
         if ($request->submit_type === 'file') {
             $hide_upload_file = '';
             $hide_sentence = 'hide';
@@ -48,11 +47,9 @@ class AppController extends Controller
             $hide_sentence = '';
         }
 
-        self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
-        if(self::$condition_number < 1) {
-            self::$condition_number = 5;
-        }
-
+        /**
+         * 校正形式ごとの内容の取得処理
+         */
         if ($request->file('file')) {
             $sentence = file_get_contents($request->file('file')->getRealPath());
         }
@@ -60,13 +57,24 @@ class AppController extends Controller
             $sentence = $request->sentence;
         }
 
+        /**
+         * 前回の校正条件の数を引継ぎ
+         */
+        self::checkCondition();
+
+        /**
+         * 入力が空文字だった場合の備え
+         */
         $before_rep = '';
         $after_rep = '';
 
-        for($i = 0; $i < self::$condition_number; $i++) {
-            $before_str = $request->input("before_str" . $i);
-            $after_str = $request->input("after_str" . $i);
-            if($i === 0) {
+        /**
+         * 条件に従って校正する処理
+         */
+        for ($i = 1; $i <= self::$condition_number; $i++) {
+            $before_str = $request->input("before_str$i");
+            $after_str = $request->input("after_str$i");
+            if ($i === 1) {
                 $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $sentence);
                 $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $sentence);
             }
@@ -86,5 +94,17 @@ class AppController extends Controller
         $request->flash();
 
         return view('app.index', $data);
+    }
+
+    private static $condition_number;
+
+    private function checkCondition() {
+        /**
+         * 前回の校正条件の数を引継ぎ
+         */
+        self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
+        if (self::$condition_number < 1) {
+            self::$condition_number = 1;
+        }
     }
 }
