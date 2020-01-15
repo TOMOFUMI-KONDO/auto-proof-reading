@@ -11,7 +11,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vagrant/
-/.idea/workspace.xml
+.idea/**/workspace.xml
 app/Http/Controllers/TestController.php
 resources/views/test/index.blade.php
 public/js/test.js
