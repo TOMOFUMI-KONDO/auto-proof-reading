@@ -19,3 +19,4 @@ resources/sass/test.scss
 public/css/test.css
 composer.json
 composer.lock
+.idea/
