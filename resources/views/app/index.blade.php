@@ -4,7 +4,7 @@
     <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
     @component('components.head')
         @slot('title')
-            自動校正サービス
+            自動校正
         @endslot
         @slot('css')
             app
@@ -18,7 +18,7 @@
 @section('header')
     @component('components.header')
         @slot('h1')
-            自動校正サービス
+            自動校正
         @endslot
     @endcomponent
 @endsection
