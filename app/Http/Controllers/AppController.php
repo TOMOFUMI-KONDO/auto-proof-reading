@@ -69,7 +69,7 @@ class AppController extends Controller
         $after_rep = '';
 
         /**
-         * 条件に従って校正する処理
+         * input入力の条件に従って校正する処理
          */
         for ($i = 1; $i <= self::$condition_number; $i++) {
             $before_str = $request->input("before_str$i");
@@ -79,6 +79,21 @@ class AppController extends Controller
                 $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $sentence);
             }
             else {
+                $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
+                $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+            }
+        }
+
+        /*
+         * csvファイルの条件に従って校正する処理
+         */
+        if (!empty($request->file('condition_file'))) {
+            $condition_file = $request->file('condition_file')->store('condition_files');
+            $fp = fopen(storage_path('app/') . $condition_file, 'r');
+
+            while ($line = fgetcsv($fp, 1024, ',', '"')) {
+                $before_str = $line[0];
+                $after_str = $line[1];
                 $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
                 $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
             }
