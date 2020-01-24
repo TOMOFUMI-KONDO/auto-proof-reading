@@ -9,6 +9,7 @@ $dark-color: #000000;
 }
 
 @mixin click_me {
+    display: inline-block;
     color: #0E0EFF;
     text-decoration: underline;
     cursor: pointer;
@@ -96,6 +97,10 @@ body {
         width: 60%;
         padding: 40px;
         background-color: #eeeeee;
+
+        img {
+            display: block;
+        }
     }
 
     .modal_close {

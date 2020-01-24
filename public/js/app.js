@@ -50,8 +50,9 @@ $(document).ready(function() {
         condition_number--;
 
         $('#inputs p:last').remove();
-        $('#inputs input:last').remove();
-        $('#inputs input:last').remove();
+        var inputs_last = $('#inputs input:last');
+        inputs_last.remove();
+        inputs_last.remove();
         $('#inputs br:last').remove();
 
         $.cookie('condition_number', condition_number);
@@ -62,9 +63,13 @@ $(document).ready(function() {
      * モーダルの表示切替を行う処理
      */
     $('#modal_open').on('click', function () {
+        $('#modal_content').css('margin-left', '0');
         $('#modal').fadeIn();
+        $('body').css('overflow', 'hidden');
     });
-    $('#modal_close').on('click', function () {
+    $('#modal_close, #modal_bg').on('click', function () {
+        $('#modal_content').css('margin-left', '3px');
         $('#modal').fadeOut();
+        $('body').css('overflow', 'visible');
     })
 });

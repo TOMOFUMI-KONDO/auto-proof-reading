@@ -46,6 +46,7 @@ body {
 }
 
 #conditions span.modal_open {
+  display: inline-block;
   color: #0E0EFF;
   text-decoration: underline;
   cursor: pointer;
@@ -81,7 +82,12 @@ body {
   background-color: #eeeeee;
 }
 
+#conditions .modal_content img {
+  display: block;
+}
+
 #conditions .modal_close {
+  display: inline-block;
   color: #0E0EFF;
   text-decoration: underline;
   cursor: pointer;

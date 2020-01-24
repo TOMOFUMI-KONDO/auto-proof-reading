@@ -61,10 +61,10 @@
             </div>
             <p id="add" class="button">入力ボックス追加</p>
             <p id="delete" class="button">入力ボックス削除</p>
-            <p>校正条件を指定するcsvファイルをアップロードしてください。↓<span id="modal_open" class="modal_open">（csvファイルの形式について）</span></p>
+            <p>↓校正条件を指定するcsvファイルをアップロードしてください。<span id="modal_open" class="modal_open">（csvファイルの形式について）</span></p>
             <div id="modal" class="modal">
-                <div class="modal_bg"></div>
-                <div class="modal_content">
+                <div id="modal_bg" class="modal_bg"></div>
+                <div id="modal_content" class="modal_content">
                     <p>【csvファイルの入力形式について】<br/>
                         　　区切り文字は「,」、囲み文字は「"」でファイルを作成してください。
                     </p>
