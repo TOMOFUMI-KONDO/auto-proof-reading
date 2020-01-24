@@ -88,7 +88,8 @@ class AppController extends Controller
          * csvファイルの条件に従って校正する処理
          */
         if (!empty($request->file('condition_file'))) {
-            $condition_file = $request->file('condition_file')->store('condition_files');
+            $file_name = $request->file('condition_file')->getClientOriginalName();
+            $condition_file = $request->file('condition_file')->storeAs('condition_files', $file_name);
             $fp = fopen(storage_path('app/') . $condition_file, 'r');
 
             while ($line = fgetcsv($fp, 1024, ',', '"')) {

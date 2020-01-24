@@ -33,7 +33,7 @@
             {{ Form::label('submit_type_text', 'テキストを入力する') }}
         </div>
         <div id="upload_file" class="{{ $hide_upload_file }}">
-            <p>校正するテキストファイルをアップロードしてください。</p>
+            <p>↓校正するテキストファイルをアップロードしてください。</p>
             {{ Form::file('file', ['id' => 'file']) }}
         </div>
         <div id="sentence" class="{{ $hide_sentence }}">
@@ -61,6 +61,17 @@
             </div>
             <p id="add" class="button">入力ボックス追加</p>
             <p id="delete" class="button">入力ボックス削除</p>
+            <p>校正条件を指定するcsvファイルをアップロードしてください。↓<span id="modal_open" class="modal_open">（csvファイルの形式について）</span></p>
+            <div id="modal" class="modal">
+                <div class="modal_bg"></div>
+                <div class="modal_content">
+                    <p>【csvファイルの入力形式について】<br/>
+                        　　区切り文字は「,」、囲み文字は「"」でファイルを作成してください。
+                    </p>
+                    <img src="{{asset('storage/csv_example.jpg')}}" alt="csvファイルの例"/>
+                    <p id="modal_close" class="modal_close">閉じる</p>
+                </div>
+            </div>
             {{ Form::file('condition_file', ['id' => 'condition_file', 'class' => 'condition_file']) }}
         </div>
         {{ Form::submit('校正する') }}

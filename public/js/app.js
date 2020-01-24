@@ -57,4 +57,14 @@ $(document).ready(function() {
         $.cookie('condition_number', condition_number);
         console.log('校正条件の数を' + condition_number + 'に変更しました。');
     });
+
+    /**
+     * モーダルの表示切替を行う処理
+     */
+    $('#modal_open').on('click', function () {
+        $('#modal').fadeIn();
+    });
+    $('#modal_close').on('click', function () {
+        $('#modal').fadeOut();
+    })
 });
