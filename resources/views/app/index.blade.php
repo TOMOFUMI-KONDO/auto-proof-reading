@@ -1,10 +1,10 @@
-@extends('layouts.default')
+    @extends('layouts.default')
 
 @section('head')
     <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
     @component('components.head')
         @slot('title')
-            自動校正サービス
+            自動校正
         @endslot
         @slot('css')
             app
@@ -18,7 +18,7 @@
 @section('header')
     @component('components.header')
         @slot('h1')
-            自動校正サービス
+            自動校正
         @endslot
     @endcomponent
 @endsection
@@ -61,6 +61,7 @@
             </div>
             <p id="add" class="button">入力ボックス追加</p>
             <p id="delete" class="button">入力ボックス削除</p>
+            {{ Form::file('condition_file', ['id' => 'condition_file', 'class' => 'condition_file']) }}
         </div>
         {{ Form::submit('校正する') }}
     </form>
