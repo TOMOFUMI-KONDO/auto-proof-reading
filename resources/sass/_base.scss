@@ -1,0 +1,37 @@
+$content-max-width: 1180px;
+
+$dark-color: #111;
+
+$breakpoints: (
+    "smp": "screen and (max-width: 767px)",
+    "tab": "screen and (max-width: #{$content-max-width - 1px})",
+    "pc": "screen and (min-width: #{$content-max-width})",
+);
+
+@mixin alignCenter($vertical: 0) {
+    margin: $vertical auto;
+}
+
+@mixin mq($breakpoint: sp) {
+    @media #{map_get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+@include mq(pc) {
+    .tab, .smp {
+        display: none;
+    }
+}
+
+@include mq(tab) {
+    .pc, .smp:not(.tab) {
+        display: none;
+    }
+}
+
+@include mq(smp) {
+    .tab:not(.smp) {
+        display: none;
+    }
+}

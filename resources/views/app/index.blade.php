@@ -1,4 +1,4 @@
-    @extends('layouts.default')
+@extends('layouts.default')
 
 @section('head')
     <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
@@ -23,7 +23,11 @@
     @endcomponent
 @endsection
 
-@section('content')
+@section('main')
+    <p>ここに校正前の文章が出ます。</p>
+    <p id="before_rep" class="before_rep">{!! nl2br($before_rep) !!}</p>
+    <p>ここに校正後の文章が出ます。</p>
+    <p id="after_rep" class="after_rep">{!! nl2br($after_rep) !!}</p>
     <form method="POST" action="/" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div id="submit_type">
@@ -34,7 +38,7 @@
         </div>
         <div id="upload_file" class="{{ $hide_upload_file }}">
             <p>↓校正するテキストファイルをアップロードしてください。</p>
-            {{ Form::file('file', ['id' => 'file']) }}
+            {{ Form::file('sentence', ['id' => 'file']) }}
         </div>
         <div id="sentence" class="{{ $hide_sentence }}">
             <p>校正する文章を入力してください。</p>
@@ -51,7 +55,7 @@
                     <p>校正後</p>
                 </div>
             </div>
-            <div id="inputs">
+            <div id="inputs" class="inputs">
                 @for ($i = 1; $i <= $condition_number; $i++)
                     <p>{{ $i }}</p>
                     {{ Form::text("before_str$i", old("before_str$i")) }}
@@ -59,16 +63,15 @@
                     <br />
                 @endfor
             </div>
-            <p id="add" class="button">入力ボックス追加</p>
-            <p id="delete" class="button">入力ボックス削除</p>
+            <p id="add" class="add button">入力ボックス追加</p>
+            <p id="delete" class="delete button">入力ボックス削除</p>
             <p>↓校正条件を指定するcsvファイルをアップロードしてください。<span id="modal_open" class="modal_open">（csvファイルの形式について）</span></p>
             <div id="modal" class="modal">
                 <div id="modal_bg" class="modal_bg"></div>
                 <div id="modal_content" class="modal_content">
                     <p>【csvファイルの入力形式について】<br/>
-                        　　区切り文字は「,」、囲み文字は「"」でファイルを作成してください。
-                    </p>
-                    <img src="{{asset('storage/csv_example.jpg')}}" alt="csvファイルの例"/>
+                        区切り文字は「,」、囲み文字は「"」でファイルを作成してください。</p>
+                    <img src="{{asset('img/csv_example.jpg')}}" alt="csvファイルの例"/>
                     <p id="modal_close" class="modal_close">閉じる</p>
                 </div>
             </div>
@@ -76,8 +79,4 @@
         </div>
         {{ Form::submit('校正する') }}
     </form>
-    <p>ここに校正前の文章が出ます。</p>
-    <p id="before_rep">{!! nl2br($before_rep) !!}</p>
-    <p>ここに校正後の文章が出ます。</p>
-    <p id="after_rep">{!! nl2br($after_rep) !!}</p>
 @endsection

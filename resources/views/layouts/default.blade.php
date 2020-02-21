@@ -7,8 +7,8 @@
 <header>
     @yield('header')
 </header>
-<section id="content">
-    @yield('content')
-</section>
+<main>
+    @yield('main')
+</main>
 </body>
 </html>

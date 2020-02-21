@@ -1,5 +1,6 @@
-$dark-color: #000000;
+@import "_base.scss";
 
+//高税前後の文章表示部分のレイアウト
 @mixin print_area($replace_color: #ff0000, $font_color: $dark-color) {
     border: 1px dashed $dark-color;
     .replaced {
@@ -8,6 +9,7 @@ $dark-color: #000000;
     color: $font_color;
 }
 
+//クリックできることを示すUI
 @mixin click_me {
     display: inline-block;
     color: #0E0EFF;
@@ -19,105 +21,114 @@ $dark-color: #000000;
     }
 }
 
-/**
-共通の処理
- */
 body {
     margin: 0;
 }
 
-.button {
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid #000000;
-    background-color: #cccccc;
-    padding: 10px;
+header {
     text-align: center;
+    background-color: $dark-color;
 
-    &:hover {
-        opacity: 0.7;
+    h1 {
+        padding: 20px 0;
+        font-size: 42px;
+        color: #fff;
     }
 }
 
-.hide {
-    display: none;
-}
+main {
+    max-width: $content-max-width;
+    @include alignCenter();
 
-/**
-個別の処理
- */
-#conditions {
-    .description {
-        div {
-            &:last-child {
-                p {
-                    display: inline-block;
-                    width: 160px;
-                    text-align: center;
+    .button {
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid #000000;
+        background-color: #cccccc;
+        padding: 10px;
+        text-align: center;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .before_rep {
+        @include print_area(#0000ff);
+    }
+
+    .after_rep {
+        @include print_area(#ff0000);
+    }
+
+    #conditions {
+        .description {
+            div {
+                &:last-child {
+                    p {
+                        display: inline-block;
+                        width: 160px;
+                        text-align: center;
+                    }
                 }
             }
         }
-    }
 
-    #inputs {
-        p {
-            display: inline-block;
-            margin: 5px 3px 5px 0;
+        .inputs {
+            p {
+                display: inline-block;
+                margin: 5px 3px 5px 0;
+            }
         }
-    }
 
-    #add, #delete {
-        width: 150px;
-    }
+        .add, .delete {
+            width: 150px;
+        }
 
-    span.modal_open {
-        @include click_me();
-    }
+        span.modal_open {
+            @include click_me();
+        }
 
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-    }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
 
-    .modal_bg {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(0,0,0,0.8);
-    }
+            .modal_bg {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0,0,0,0.8);
+            }
 
-    .modal_content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60%;
-        padding: 40px;
-        background-color: #eeeeee;
+            .modal_content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60%;
+                padding: 40px;
+                background-color: #eeeeee;
 
-        img {
+                img {
+                    display: block;
+                }
+            }
+
+            .modal_close {
+                @include click_me();
+            }
+        }
+
+        .condition_file {
             display: block;
+            margin-bottom: 20px;
         }
     }
-
-    .modal_close {
-        @include click_me();
-    }
-
-    .condition_file {
-        display: block;
-        margin-bottom: 20px;
-    }
 }
-
-#before_rep {
-    @include print_area(#0000ff);
-}
-
-#after_rep {
-    @include print_area(#ff0000);
-}
-

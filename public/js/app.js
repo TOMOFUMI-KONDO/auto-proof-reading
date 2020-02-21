@@ -1,7 +1,7 @@
 $(document).ready(function() {
     /**
      * ページリロード時にラジオボタンの値と校正形式（ファイルorテキスト）の表示が異なるバグを防ぐ処理
-      */
+     */
     if ($('#submit_type_text').prop('checked') === true) {
         $('#upload_file').addClass('hide');
         $('#sentence').removeClass('hide');
@@ -37,8 +37,8 @@ $(document).ready(function() {
 
         $(
             '<p style="margin-right: 9px; ">' + condition_number + ' </p>' +
-            '<input name="before_str' + condition_number + '" type="text" value="" style="margin-right: 5px; "></label>' +
-            '<input name="after_str' + condition_number + '" type="text" value=""></label>' +
+            '<input name="before_str' + condition_number + '" type="text" value="" style="margin-right: 5px; ">' +
+            '<input name="after_str' + condition_number + '" type="text" value="">' +
             '<br />'
         ).appendTo('#inputs');
 
@@ -49,11 +49,10 @@ $(document).ready(function() {
     $('#delete').on('click', function() {
         condition_number--;
 
-        $('#inputs p:last').remove();
-        var inputs_last = $('#inputs input:last');
-        inputs_last.remove();
-        inputs_last.remove();
-        $('#inputs br:last').remove();
+        $('#inputs p:last-of-type').remove();
+        $('#inputs input:last-of-type').remove();
+        $('#inputs input:last-of-type').remove();
+        $('#inputs br:last-of-type').remove();
 
         $.cookie('condition_number', condition_number);
         console.log('校正条件の数を' + condition_number + 'に変更しました。');

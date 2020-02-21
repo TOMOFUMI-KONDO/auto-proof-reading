@@ -50,8 +50,8 @@ class AppController extends Controller
         /**
          * 校正形式ごとの内容の取得処理
          */
-        if ($request->file('file')) {
-            $sentence = file_get_contents($request->file('file')->getRealPath());
+        if ($request->file('sentence')) {
+            $sentence = file_get_contents($request->file('sentence')->getRealPath());
         }
         else {
             $sentence = $request->sentence;
