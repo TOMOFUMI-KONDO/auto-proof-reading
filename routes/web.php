@@ -22,7 +22,7 @@ Route::get('/', 'AppController@index');
 Route::post('/', 'AppController@post');
 
 /**
- * テスト用ページ
+ * テスト用ページ（ローカルのみ）
  */
 if(app('env') === 'local') {
     Route::get('test', 'TestController@index');
