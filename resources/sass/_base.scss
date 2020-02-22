@@ -1,6 +1,7 @@
 $content-max-width: 1180px;
 
 $dark-color: #111;
+$light-color: #eee;
 
 $breakpoints: (
     "smp": "screen and (max-width: 767px)",
@@ -8,8 +9,9 @@ $breakpoints: (
     "pc": "screen and (min-width: #{$content-max-width})",
 );
 
-@mixin alignCenter($vertical: 0) {
-    margin: $vertical auto;
+//block要素を中央ぞろえ（引数は上下のmargin）
+@mixin alignCenter($margin-top: 0, $margin-bottom: 0) {
+    margin: $margin-top auto $margin-bottom auto;
 }
 
 @mixin mq($breakpoint: sp) {

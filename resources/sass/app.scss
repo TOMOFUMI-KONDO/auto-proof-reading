@@ -2,6 +2,9 @@
 
 //高税前後の文章表示部分のレイアウト
 @mixin print_area($replace_color: #ff0000, $font_color: $dark-color) {
+    width: 90%;
+    @include alignCenter(0, 50px);
+    padding: 20px;
     border: 1px dashed $dark-color;
     .replaced {
         color: $replace_color;
@@ -16,8 +19,16 @@
     text-decoration: underline;
     cursor: pointer;
 
-    &:hover {
-        color: #e3a100;
+    @include mq(pc) {
+        &:hover {
+            color: #e3a100;
+        }
+    }
+
+    @include mq(tab) {
+        &:active {
+            color: #e3a100;
+        }
     }
 }
 
@@ -38,19 +49,39 @@ header {
 
 main {
     max-width: $content-max-width;
+    width: 90%;
     @include alignCenter();
 
     .button {
         display: inline-block;
+        width: 160px;
+        margin: 10px;
+        padding: 20px;
         cursor: pointer;
-        border: 1px solid #000000;
-        background-color: #cccccc;
-        padding: 10px;
+        //border-radius: 10% / 25%;
         text-align: center;
+        background-color: $dark-color;
+        color: $light-color;
+        font-size: 18px;
+        font-weight: bold;
 
-        &:hover {
-            opacity: 0.7;
+        @include mq(pc) {
+            &:hover {
+                opacity: 0.7;
+            }
         }
+
+        @include mq(tab) {
+            &:active {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .bold {
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: underline;
     }
 
     .hide {
@@ -65,70 +96,118 @@ main {
         @include print_area(#ff0000);
     }
 
-    #conditions {
-        .description {
-            div {
-                &:last-child {
+    .submit_type {
+        width: 94%;
+        @include alignCenter(0, 30px);
+    }
+
+    .file_upload input {
+        font-size: 16px;
+    }
+
+    .file_upload, .sentence {
+        width: 94%;
+        @include alignCenter(0, 50px);
+    }
+
+    .conditions {
+        .input_conditions {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            @include alignCenter(0, 50px);
+
+            @include mq(tab) {
+                flex-direction: column;
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .inputs {
+                div {
                     p {
                         display: inline-block;
-                        width: 160px;
+                        width: 255px;
+                        margin: 0;
                         text-align: center;
+                        font-size: 20px;
                     }
                 }
+
+                input {
+                    height: 30px;
+                    margin-bottom: 5px;
+                    font-size: 20px;
+                }
             }
         }
 
-        .inputs {
-            p {
-                display: inline-block;
-                margin: 5px 3px 5px 0;
-            }
-        }
+        .csv_upload {
+            width: 90%;
+            @include alignCenter();
 
-        .add, .delete {
-            width: 150px;
-        }
+            > p {
+                font-size: 20px;
 
-        span.modal_open {
-            @include click_me();
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-
-            .modal_bg {
-                position: absolute;
-                width: 100vw;
-                height: 100vh;
-                background-color: rgba(0,0,0,0.8);
-            }
-
-            .modal_content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 60%;
-                padding: 40px;
-                background-color: #eeeeee;
-
-                img {
-                    display: block;
+                span.modal_open {
+                    @include click_me();
                 }
             }
 
-            .modal_close {
-                @include click_me();
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+
+                .modal_bg {
+                    position: absolute;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(0,0,0,0.8);
+                }
+
+                .modal_content {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 60%;
+                    padding: 40px;
+                    background-color: #eeeeee;
+
+                    img {
+                        display: block;
+                    }
+
+                    p:nth-of-type(2), img {
+                        margin-left: 5%;
+                    }
+                }
+
+                .modal_close {
+                    @include click_me();
+                }
+            }
+
+            .condition_file {
+                margin-bottom: 20px;
+                font-size: 16px;
             }
         }
+    }
 
-        .condition_file {
-            display: block;
-            margin-bottom: 20px;
-        }
+    .submit {
+        display: block;
+        min-width: 200px;
+        width: 30%;
+        height: 100px;
+        @include alignCenter(30px, 30px);
+        font-size: 30px;
     }
 }
