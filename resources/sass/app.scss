@@ -37,8 +37,9 @@ body {
 }
 
 header {
+    @include alignCenter();
     text-align: center;
-    background-color: $dark-color;
+    background-color: $main-color;
 
     h1 {
         padding: 20px 0;

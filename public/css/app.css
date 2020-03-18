@@ -23,8 +23,9 @@ body {
 }
 
 header {
+  margin: 0 auto 0 auto;
   text-align: center;
-  background-color: #111;
+  background-color: #5ca2a0;
 }
 
 header h1 {
