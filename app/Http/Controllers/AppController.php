@@ -19,8 +19,8 @@ class AppController extends Controller
         self::checkCondition();
 
         $data = [
-            'hide_upload_file' => '',
-            'hide_sentence' => 'hide',
+            'hide_file_upload' => '',
+            'hide_text_upload' => 'hide',
             'condition_number' => self::$condition_number,
             'before_rep' => '校正前',
             'after_rep' => '校正後',
@@ -37,12 +37,12 @@ class AppController extends Controller
 
          //校正形式の切り替え（ファイルorテキスト）
         if ($request->submit_type === 'file') {
-            $hide_upload_file = '';
-            $hide_sentence = 'hide';
+            $hide_file_upload = '';
+            $hide_text_upload = 'hide';
         }
         else if ($request->submit_type === 'text') {
-            $hide_upload_file = 'hide';
-            $hide_sentence = '';
+            $hide_file_upload = 'hide';
+            $hide_text_upload = '';
         }
 
         //校正形式ごとの内容の取得処理
@@ -89,8 +89,8 @@ class AppController extends Controller
         }
 
         $data = [
-            'hide_upload_file' => $hide_upload_file,
-            'hide_sentence' => $hide_sentence,
+            'hide_file_upload' => $hide_file_upload,
+            'hide_text_upload' => $hide_text_upload,
             'condition_number' => self::$condition_number,
             'before_rep' => $before_rep !== '' ? $before_rep : '校正前',
             'after_rep' => $after_rep !== '' ? $after_rep : '校正後',

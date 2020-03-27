@@ -2,7 +2,7 @@ $(document).ready(function() {
      // ページリロード時にラジオボタンの値と校正形式（ファイルorテキスト）の表示が異なるバグを防ぐ処理
     if ($('#submit_type_text').prop('checked') === true) {
         $('#file_upload').addClass('hide');
-        $('#sentence').removeClass('hide');
+        $('#text_upload').removeClass('hide');
     }
 
      // ラジオボタンで校正形式（ファイルorテキスト）の変更をする処理
@@ -10,11 +10,11 @@ $(document).ready(function() {
         var submit_type = $('input[name="submit_type"]:checked').val();
         if (submit_type === 'file') {
             $('#file_upload').removeClass('hide');
-            $('#sentence').addClass('hide');
+            $('#text_upload').addClass('hide');
         }
         else if (submit_type === 'text') {
             $('#file_upload').addClass('hide');
-            $('#sentence').removeClass('hide');
+            $('#text_upload').removeClass('hide');
         }
     });
 
@@ -30,7 +30,6 @@ $(document).ready(function() {
         condition_number++;
 
         $(
-            // '<p class="input_number">' + condition_number + ' </p>' +
             '<input name="before_str' + condition_number + '" type="text" value="" style="margin-right: 5px; ">' +
             '<i class="fas fa-arrow-right" style="width: 20px"></i>' +
             '<input name="after_str' + condition_number + '" type="text" value="">' +
@@ -44,7 +43,6 @@ $(document).ready(function() {
     $('#delete').on('click', function() {
         condition_number--;
 
-        // $('#inputs .input_number:last-of-type').remove();
         $input = $('#inputs input:last-of-type');
         $prev = $input.prev('i').prev('input');
         $input.remove();
@@ -56,15 +54,20 @@ $(document).ready(function() {
         console.log('校正条件の数を' + condition_number + 'に変更しました。');
     });
 
+    $body = $('body');
      //モーダルの表示切替を行う処理
     $('#modal_open').on('click', function () {
-        $('#modal_content').css('margin-left', '0');
+        $body.css({
+            'margin-right': '17px', //overflow: hiddenにすると画面のスクロールバーが消えるため、その分画面が広くなってレイアウトが動くのを相殺する。
+            'overflow': 'hidden',
+        });
         $('#modal').fadeIn();
-        $('body').css('overflow', 'hidden');
     });
     $('#modal_close, #modal_bg').on('click', function () {
-        $('#modal_content').css('margin-left', '3px');
+        $body.css({
+            'margin-right': '0',
+            'overflow': 'visible',
+        });
         $('#modal').fadeOut();
-        $('body').css('overflow', 'visible');
     })
 });

@@ -1,39 +1,105 @@
-$content-max-width: 1180px;
+$content-max-width: 1180px; //mainコンテンツの最大幅
 
-$main-color: rgb(92, 162, 160);
-$dark-color: #111;
-$light-color: #eee;
+$main-color: #60A8A6; //メインカラー
+$accent-color: #A87960; //アクセントカラー
+$click-color: #0e0ecc; //リンクなど、クリックで何らかのイベントが発生することを示すカラー
+$dark-color: #111; //文字や背景に使う
+$light-color: #f5f5f5; //文字や背景に使う
 
+//メディアクエリに用いるブレークポイントを指定
 $breakpoints: (
     "smp": "screen and (max-width: 767px)",
     "tab": "screen and (max-width: #{$content-max-width - 1px})",
     "pc": "screen and (min-width: #{$content-max-width})",
 );
 
-//block要素を中央ぞろえ（引数は上下のmargin）
-@mixin alignCenter($margin-top: 0, $margin-bottom: 0) {
-    margin: $margin-top auto $margin-bottom auto;
+//h2タグのスタイル指定
+@mixin h2() {
+
 }
 
-@mixin mq($breakpoint: sp) {
+//h3タグのスタイル指定
+@mixin h3() {
+
+}
+
+//block要素を中央ぞろえ（引数にwidthを指定）
+@mixin alignCenter($width: 90%) {
+    width: $width;
+    margin: 20px auto;
+}
+
+//クリックできることを示すUI
+@mixin click_me() {
+    display: inline-block;
+    color: $click-color;
+    text-decoration: underline;
+    cursor: pointer;
+
+    @include mediaQuery(pc) {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    @include mediaQuery(tab) {
+        &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+//hover(active)時に要素の透明度を変える
+@mixin change_opacity($opacity: 0.7) {
+    @include mediaQuery(pc) {
+        &:hover {
+            opacity: $opacity;
+        }
+    }
+
+    @include mediaQuery(tab) {
+        &:active {
+            opacity: $opacity;
+        }
+    }
+}
+
+@mixin button() {
+    display: inline-block;
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    background-color: $accent-color;
+    color: $light-color;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none;
+
+    @include change_opacity();
+}
+
+//メディアクエリの呼び出し
+@mixin mediaQuery($breakpoint: smp) {
     @media #{map_get($breakpoints, $breakpoint)} {
         @content;
     }
 }
 
-@include mq(pc) {
+@include mediaQuery(pc) {
     .tab, .smp {
         display: none;
     }
 }
 
-@include mq(tab) {
+@include mediaQuery(tab) {
     .pc, .smp:not(.tab) {
         display: none;
     }
 }
 
-@include mq(smp) {
+@include mediaQuery(smp) {
     .tab:not(.smp) {
         display: none;
     }

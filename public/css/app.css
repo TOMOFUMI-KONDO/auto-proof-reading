@@ -23,114 +23,116 @@ body {
 }
 
 header {
-  margin: 0 auto 0 auto;
-  text-align: center;
-  background-color: #5ca2a0;
+  background-color: #60A8A6;
 }
 
 header h1 {
+  margin: 0;
   padding: 20px 0;
+  text-align: center;
+  color: #f5f5f5;
   font-size: 42px;
-  color: #fff;
 }
 
 main {
   max-width: 1180px;
   width: 90%;
-  margin: 0 auto 0 auto;
+  margin: 20px auto;
 }
 
-main .button {
+main > article button {
   display: inline-block;
-  width: 160px;
   margin: 10px;
   padding: 20px;
+  border: none;
   cursor: pointer;
   text-align: center;
-  background-color: #111;
-  color: #eee;
+  background-color: #A87960;
+  color: #f5f5f5;
   font-size: 18px;
   font-weight: bold;
+  outline: none;
 }
 
 @media screen and (min-width: 1180px) {
-  main .button:hover {
+  main > article button:hover {
     opacity: 0.7;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main .button:active {
+  main > article button:active {
     opacity: 0.7;
   }
 }
 
-main .bold {
-  font-size: 24px;
+main > article .bold {
   font-weight: bold;
-  text-decoration: underline;
 }
 
-main .hide {
+main > article .hide {
   display: none;
 }
 
-main .before_rep {
+main > article > .calibrated .before_rep > p {
   width: 90%;
-  margin: 0 auto 50px auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px dashed #111;
   color: #111;
 }
 
-main .before_rep .replaced {
+main > article > .calibrated .before_rep > p .replaced {
   color: #0000ff;
 }
 
-main .after_rep {
+main > article > .calibrated .after_rep > p {
   width: 90%;
-  margin: 0 auto 50px auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px dashed #111;
   color: #111;
 }
 
-main .after_rep .replaced {
+main > article > .calibrated .after_rep > p .replaced {
   color: #ff0000;
 }
 
-main .submit_type {
-  width: 94%;
-  margin: 0 auto 30px auto;
+main > article > .form > form > .sentence .submit_type {
+  width: 90%;
+  margin: 20px auto;
 }
 
-main .file_upload input {
+main > article > .form > form > .sentence .file_upload input {
   font-size: 16px;
 }
 
-main .file_upload,
-main .sentence {
-  width: 94%;
-  margin: 0 auto 50px auto;
+main > article > .form > form > .sentence .file_upload,
+main > article > .form > form > .sentence .text_upload {
+  width: 90%;
+  margin: 20px auto;
 }
 
-main .conditions .input_conditions {
+main > article > .form > form > .conditions > .text_conditions {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .text_conditions > div {
   display: -webkit-box;
   display: flex;
   justify-content: space-around;
-  width: 80%;
-  margin: 0 auto 50px auto;
 }
 
 @media screen and (max-width: 1179px) {
-  main .conditions .input_conditions {
+  main > article > .form > form > .conditions > .text_conditions > div {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
             flex-direction: column;
   }
 }
 
-main .conditions .input_conditions .buttons {
+main > article > .form > form > .conditions > .text_conditions > div > .buttons {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -138,49 +140,49 @@ main .conditions .input_conditions .buttons {
           flex-direction: column;
 }
 
-main .conditions .input_conditions .inputs div p {
+main > article > .form > form > .conditions > .text_conditions > div > .inputs > div > p {
   display: inline-block;
-  width: 255px;
+  width: 268px;
   margin: 0;
   text-align: center;
   font-size: 20px;
 }
 
-main .conditions .input_conditions .inputs input {
+main > article > .form > form > .conditions > .text_conditions > div > .inputs > input {
   height: 30px;
   margin-bottom: 5px;
   font-size: 20px;
 }
 
-main .conditions .csv_upload {
+main > article > .form > form > .conditions > .text_conditions > div > .inputs > i {
+  text-align: center;
+}
+
+main > article > .form > form > .conditions > .csv_conditions {
   width: 90%;
-  margin: 0 auto 0 auto;
+  margin: 20px auto;
 }
 
-main .conditions .csv_upload > p {
-  font-size: 20px;
-}
-
-main .conditions .csv_upload > p span.modal_open {
+main > article > .form > form > .conditions > .csv_conditions > .modal_open > span {
   display: inline-block;
-  color: #0E0EFF;
+  color: #0e0ecc;
   text-decoration: underline;
   cursor: pointer;
 }
 
 @media screen and (min-width: 1180px) {
-  main .conditions .csv_upload > p span.modal_open:hover {
-    color: #e3a100;
+  main > article > .form > form > .conditions > .csv_conditions > .modal_open > span:hover {
+    text-decoration: none;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main .conditions .csv_upload > p span.modal_open:active {
-    color: #e3a100;
+  main > article > .form > form > .conditions > .csv_conditions > .modal_open > span:active {
+    text-decoration: underline;
   }
 }
 
-main .conditions .csv_upload .modal {
+main > article > .form > form > .conditions > .csv_conditions > .modal {
   display: none;
   position: fixed;
   top: 0;
@@ -189,14 +191,14 @@ main .conditions .csv_upload .modal {
   height: 100vh;
 }
 
-main .conditions .csv_upload .modal .modal_bg {
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_bg {
   position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-main .conditions .csv_upload .modal .modal_content {
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -204,48 +206,70 @@ main .conditions .csv_upload .modal .modal_content {
           transform: translate(-50%, -50%);
   width: 60%;
   padding: 40px;
-  background-color: #eeeeee;
+  background-color: #f5f5f5;
 }
 
-main .conditions .csv_upload .modal .modal_content img {
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > div {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > div > img {
   display: block;
 }
 
-main .conditions .csv_upload .modal .modal_content p:nth-of-type(2),
-main .conditions .csv_upload .modal .modal_content img {
-  margin-left: 5%;
-}
-
-main .conditions .csv_upload .modal .modal_close {
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close {
   display: inline-block;
-  color: #0E0EFF;
+  color: #0e0ecc;
   text-decoration: underline;
   cursor: pointer;
 }
 
 @media screen and (min-width: 1180px) {
-  main .conditions .csv_upload .modal .modal_close:hover {
-    color: #e3a100;
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close:hover {
+    text-decoration: none;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main .conditions .csv_upload .modal .modal_close:active {
-    color: #e3a100;
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close:active {
+    text-decoration: underline;
   }
 }
 
-main .conditions .csv_upload .condition_file {
+main > article > .form > form > .conditions > .csv_conditions > .condition_file {
   margin-bottom: 20px;
   font-size: 16px;
 }
 
-main .submit {
+main > article > .form > form > .submit {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  background-color: #A87960;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  width: 90%;
+  margin: 20px auto;
   display: block;
-  min-width: 200px;
-  width: 30%;
-  height: 100px;
-  margin: 30px auto 30px auto;
+  max-width: 300px;
   font-size: 30px;
+}
+
+@media screen and (min-width: 1180px) {
+  main > article > .form > form > .submit:hover {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 1179px) {
+  main > article > .form > form > .submit:active {
+    opacity: 0.7;
+  }
 }
 
