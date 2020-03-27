@@ -17,6 +17,7 @@ $breakpoints: (
 @mixin h2() {
     margin-top: 50px;
     padding-left: 10px;
+    //padding-bottom: 3px;
     border-left: $main-color solid 10px;
     border-bottom: $main-color solid 2px;
     color: $main-color;
