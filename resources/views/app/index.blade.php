@@ -43,6 +43,9 @@
                 @csrf
                 <section class="sentence">
                     <h3>校正する文章の入力</h3>
+                    @if ($errors->has('sentence'))
+                        <p class="error bold">{{ $errors->first('sentence') }}</p>
+                    @endif
                     <div id="submit_type" class="submit_type">
                         {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
                         {{ Form::label('submit_type_file', 'ファイルをアップロードする') }}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AppRequest;
 
 /**
  * Class AppController
@@ -33,9 +34,10 @@ class AppController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function post(Request $request) {
+    //AppRequest（フォームリクエスト）でフォームの内容をバリデーションしている。
+    public function post(AppRequest $request) {
 
-         //校正形式の切り替え（ファイルorテキスト）
+         //現在の校正文の入力形式を保存しておく（ファイルorテキスト）
         if ($request->submit_type === 'file') {
             $hide_file_upload = '';
             $hide_text_upload = 'hide';
@@ -46,15 +48,17 @@ class AppController extends Controller
         }
 
         //校正形式ごとの内容の取得処理
+        //ファイル形式で取得
         if ($request->file('sentence')) {
             $sentence = file_get_contents($request->file('sentence')->getRealPath());
         }
+        //テキストエリアへの入力を取得
         else {
             $sentence = $request->sentence;
         }
 
          //前回の校正条件の数を引継ぎ
-        self::checkCondition();
+        $this->checkCondition();
 
          //入力が空文字だった場合の備え
         $before_rep = '';
@@ -106,6 +110,7 @@ class AppController extends Controller
 
          //前回の校正条件の数を引継ぎ
         self::$condition_number =  $_COOKIE['condition_number'] ?? 5;
+        //校正条件の入力BOXは最低でも１つ表示
         if (self::$condition_number < 1) {
             self::$condition_number = 1;
         }
