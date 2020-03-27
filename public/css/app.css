@@ -21,6 +21,7 @@
 body {
   margin: 0;
   background-color: #f5f5f5;
+  color: #111;
 }
 
 header {
@@ -148,17 +149,44 @@ main > article > .form > form > .sentence > .error {
   color: red;
 }
 
-main > article > .form > form > .sentence .submit_type {
+main > article > .form > form > .sentence > .submit_type {
   width: 90%;
   margin: 20px auto;
 }
 
-main > article > .form > form > .sentence .file_upload input {
+@media screen and (min-width: 1180px) {
+  main > article > .form > form > .sentence > .submit_type > div {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 1179px) {
+  main > article > .form > form > .sentence > .submit_type > div:first-of-type {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  main > article > .form > form > .sentence > .submit_type > div > label:first-of-type {
+    margin-right: 30px;
+  }
+}
+
+main > article > .form > form > .sentence > .file_upload {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .sentence > .file_upload > input {
   font-size: 16px;
 }
 
-main > article > .form > form > .sentence .file_upload,
-main > article > .form > form > .sentence .text_upload {
+main > article > .form > form > .sentence > .text_upload {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .sentence > .text_upload > textarea {
   width: 90%;
   margin: 20px auto;
 }
@@ -167,6 +195,8 @@ main > article > .form > form > .conditions > p {
   width: 90%;
   margin: 20px auto;
   font-size: 14px;
+  padding-left: 1em;
+  text-indent: -1em;
   color: #767575;
 }
 
@@ -186,8 +216,8 @@ main > article > .form > form > .conditions > .text_conditions > div {
 @media screen and (max-width: 1179px) {
   main > article > .form > form > .conditions > .text_conditions > div {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-            flex-direction: column;
+    -webkit-box-direction: reverse;
+            flex-direction: column-reverse;
   }
 }
 
@@ -199,21 +229,40 @@ main > article > .form > form > .conditions > .text_conditions > div > .buttons 
           flex-direction: column;
 }
 
+main > article > .form > form > .conditions > .text_conditions > div > .inputs > div {
+  margin-bottom: 5px;
+}
+
 main > article > .form > form > .conditions > .text_conditions > div > .inputs > div > p {
   display: inline-block;
-  width: 268px;
+  width: 49.5%;
   margin: 0;
   text-align: center;
   font-size: 20px;
 }
 
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .conditions > .text_conditions > div > .inputs > div > p {
+    width: 48.9%;
+  }
+}
+
 main > article > .form > form > .conditions > .text_conditions > div > .inputs > input {
   height: 30px;
+  width: 46.4%;
   margin-bottom: 5px;
   font-size: 20px;
 }
 
+@media screen and (max-width: 1179px) {
+  main > article > .form > form > .conditions > .text_conditions > div > .inputs > input {
+    width: 42.6%;
+    font-size: 16px;
+  }
+}
+
 main > article > .form > form > .conditions > .text_conditions > div > .inputs > i {
+  width: 20px;
   text-align: center;
 }
 
@@ -283,33 +332,35 @@ main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_
 
 main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > div > img {
   display: block;
+  max-width: 100%;
 }
 
 main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close {
-  color: #0e0ecc;
-  text-decoration: underline;
-  cursor: pointer;
   text-align: right;
 }
 
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close > span {
+  color: #0e0ecc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 1180px) {
-  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close:hover {
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close > span:hover {
     text-decoration: none;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close:active {
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close > span:active {
     text-decoration: underline;
   }
 }
 
-main > article > .form > form > .conditions > .csv_conditions > div {
+main > article > .form > form > .conditions > .csv_conditions > .condition_file {
   width: 90%;
   margin: 20px auto;
-}
-
-main > article > .form > form > .conditions > .csv_conditions > div .condition_file {
+  max-width: 100%;
   margin-bottom: 20px;
   font-size: 16px;
 }

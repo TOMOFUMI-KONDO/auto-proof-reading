@@ -15,6 +15,7 @@
 body {
     margin: 0;
     background-color: $light-color;
+    color: $dark-color;
 }
 
 header {
@@ -90,17 +91,43 @@ main {
                         @include alignCenter();
                         color: red;
                     }
-
-                    .submit_type {
+                  
+                    > .submit_type {
                         @include alignCenter();
+
+                        > div {
+                            @include mediaQuery(pc) {
+                                display: inline-block;
+                            }
+
+                            &:first-of-type {
+                                @include mediaQuery(tab) {
+                                    margin-bottom: 10px;
+                                }
+                            }
+
+                            > label:first-of-type {
+                                @include mediaQuery(pc) {
+                                    margin-right: 30px;
+                                }
+                            }
+                        }
                     }
 
-                    .file_upload input {
-                        font-size: 16px;
+                    > .file_upload {
+                        @include alignCenter();
+
+                        > input {
+                            font-size: 16px;
+                        }
                     }
 
-                    .file_upload, .text_upload {
+                    > .text_upload {
                         @include alignCenter();
+
+                        > textarea {
+                            @include alignCenter()
+                        }
                     }
                 }
 
@@ -108,6 +135,8 @@ main {
                     > p {
                         @include alignCenter();
                         font-size: 14px;
+                        padding-left: 1em;
+                        text-indent: -1em;
                         color: darken($light-color, 50%);
                     }
 
@@ -120,7 +149,7 @@ main {
                             align-items: center;
 
                             @include mediaQuery(tab) {
-                                flex-direction: column;
+                                flex-direction: column-reverse;
                             }
 
                             > .buttons {
@@ -130,22 +159,35 @@ main {
 
                             > .inputs {
                                 > div {
+                                    margin-bottom: 5px;
+
                                     > p {
                                         display: inline-block;
-                                        width: 268px;
+                                        width: 49.5%; //50%だとなぜか改行されてしまった。
                                         margin: 0;
                                         text-align: center;
                                         font-size: 20px;
+
+                                        @include mediaQuery(smp) {
+                                            width: 48.9%; //49.5%のしておくとなぜか改行されてしまった。
+                                        }
                                     }
                                 }
 
                                 > input {
                                     height: 30px;
+                                    width: 46.4%; //ギリギリ一列に収まるサイズ
                                     margin-bottom: 5px;
                                     font-size: 20px;
+
+                                    @include mediaQuery(tab) {
+                                        width: 42.6%;
+                                        font-size: 16px;
+                                    }
                                 }
 
                                 > i {
+                                    width: 20px;
                                     text-align: center;
                                 }
                             }
@@ -196,23 +238,25 @@ main {
 
                                     > img {
                                         display: block;
+                                        max-width: 100%;
                                     }
                                 }
 
                                 > .modal_close {
-                                    @include click_me();
                                     text-align: right;
+
+                                    > span {
+                                        @include click_me();
+                                    }
                                 }
                             }
                         }
 
-                        > div {
+                       > .condition_file {
                             @include alignCenter();
-
-                            .condition_file {
-                                margin-bottom: 20px;
-                                font-size: 16px;
-                            }
+                            max-width: 100%;
+                            margin-bottom: 20px;
+                            font-size: 16px;
                         }
                     }
                 }
