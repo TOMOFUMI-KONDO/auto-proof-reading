@@ -60,14 +60,18 @@ $(document).ready(function() {
      //モーダルの表示切替を行う処理
     $('#modal_open').on('click', function () {
         $body.css({
-            'margin-right': '17px', //overflow: hiddenにすると画面のスクロールバーが消えるため、その分画面が広くなってレイアウトが動くのを相殺する。
             'overflow': 'hidden',
         });
+        if (window.matchMedia('(min-width: 1180px)').matches) {
+            $body.css({
+                'margin-right': '17px', //pcではoverflow: hiddenにすると画面のスクロールバーが消えるため、その分画面が広くなってレイアウトが動くのを相殺する。
+            });
+        }
         $('#modal').fadeIn();
     });
     $('#modal_close, #modal_bg').on('click', function () {
         $body.css({
-            'margin-right': '0',
+            'margin-right': '0', //pcの時はmargin-rightを元に戻す。
             'overflow': 'visible',
         });
         $('#modal').fadeOut();

@@ -44,16 +44,20 @@
                 <section class="sentence">
                     <h3>校正する文章の入力</h3>
                     <div id="submit_type" class="submit_type">
-                        {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
-                        {{ Form::label('submit_type_file', 'ファイルをアップロードする') }}
-                        {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text'])}}
-                        {{ Form::label('submit_type_text', 'テキストを入力する') }}
+                        <div>
+                            {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
+                            {{ Form::label('submit_type_file', 'ファイルをアップロードする') }}
+                        </div>
+                        <div>
+                            {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text'])}}
+                            {{ Form::label('submit_type_text', 'テキストを入力する') }}
+                        </div>
                     </div>
                     <div id="file_upload" class="file_upload {{ $hide_file_upload }}">
                         {{ Form::file('sentence', ['id' => 'file']) }}
                     </div>
                     <div id="text_upload" class="text_upload {{ $hide_text_upload }}">
-                        {{ Form::textarea('sentence', old('sentence' ), ['placeholder' => 'ここに入力', 'cols' => '100px', 'rows' => '10px']) }}
+                        {{ Form::textarea('sentence', old('sentence' ), ['placeholder' => 'ここに入力']) }}
                     </div>
                 </section>
                 <section class="conditions">
@@ -74,7 +78,7 @@
                                 </div>
                                 @for ($i = 1; $i <= $condition_number; $i++)
                                     {{ Form::text("before_str$i", old("before_str$i")) }}
-                                    <i class="fas fa-arrow-right" style="width: 20px"></i>
+                                    <i class="fas fa-arrow-right"></i>
                                     {{ Form::text("after_str$i", old("after_str$i")) }}
                                     <br />
                                 @endfor
@@ -93,11 +97,11 @@
                                         下記の例だと、「ぼく」が「おれ」に変換されます。</p>
                                     <img src="{{asset('img/csv_example.jpg')}}" alt="csvファイルの記入例"/>
                                 </div>
-                                <p id="modal_close" class="modal_close">閉じる</p>
+                                <p id="modal_close" class="modal_close"><span>閉じる</span></p>
                             </div>
                         </div>
-                        <div>
-                            {{ Form::file('condition_file', ['class' => 'condition_file']) }}
+                        <div class="condition_file">
+                            {{ Form::file('condition_file') }}
                         </div>
                     </section>
                 </section>
