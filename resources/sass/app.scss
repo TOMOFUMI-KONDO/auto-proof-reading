@@ -78,6 +78,15 @@ main {
 
                 > p {
                     @include calibrated(#ff0000); //校正されて現れた文字は赤字
+                    margin-bottom: 0;
+                }
+
+                > div {
+                    text-align: right;
+
+                    > button {
+                        padding: 10px 25px;
+                    }
                 }
             }
         }

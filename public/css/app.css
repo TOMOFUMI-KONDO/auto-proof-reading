@@ -132,10 +132,19 @@ main > article > .calibrated .after_rep > p {
   border: 1px dashed #111;
   background-color: #fff;
   color: #111;
+  margin-bottom: 0;
 }
 
 main > article > .calibrated .after_rep > p .replaced {
   color: #ff0000;
+}
+
+main > article > .calibrated .after_rep > div {
+  text-align: right;
+}
+
+main > article > .calibrated .after_rep > div > button {
+  padding: 10px 25px;
 }
 
 main > article > .form > form {

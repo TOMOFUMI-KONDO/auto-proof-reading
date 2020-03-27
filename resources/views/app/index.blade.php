@@ -32,9 +32,10 @@
                 <h3>校正前</h3>
                 <p>{!! nl2br($before_rep) !!}</p>
             </section>
-            <section class="after_rep">
+            <section id="after_rep" class="after_rep">
                 <h3>校正後</h3>
                 <p>{!! nl2br($after_rep) !!}</p>
+                <div><button type="button" id="copy">copy</button></div>
             </section>
         </section>
         <section class="form">
