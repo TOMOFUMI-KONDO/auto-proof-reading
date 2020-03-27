@@ -112,6 +112,7 @@ main > article > .calibrated .before_rep > p {
   margin: 20px auto;
   padding: 20px;
   border: 1px dashed #111;
+  background-color: #fff;
   color: #111;
 }
 
@@ -129,6 +130,7 @@ main > article > .calibrated .after_rep > p {
   margin: 20px auto;
   padding: 20px;
   border: 1px dashed #111;
+  background-color: #fff;
   color: #111;
 }
 
@@ -139,6 +141,12 @@ main > article > .calibrated .after_rep > p .replaced {
 main > article > .form > form {
   width: 90%;
   margin: 20px auto;
+}
+
+main > article > .form > form > .sentence > .error {
+  width: 90%;
+  margin: 20px auto;
+  color: red;
 }
 
 main > article > .form > form > .sentence > .submit_type {
@@ -186,6 +194,7 @@ main > article > .form > form > .sentence > .text_upload > textarea {
 main > article > .form > form > .conditions > p {
   width: 90%;
   margin: 20px auto;
+  font-size: 14px;
   padding-left: 1em;
   text-indent: -1em;
   color: #767575;

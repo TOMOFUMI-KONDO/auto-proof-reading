@@ -8,6 +8,7 @@
     .replaced {
         color: $replace_color;
     }
+    background-color: #fff;
     color: $font_color;
 }
 
@@ -86,6 +87,11 @@ main {
                 @include alignCenter();
 
                 > .sentence {
+                    > .error {
+                        @include alignCenter();
+                        color: red;
+                    }
+                  
                     > .submit_type {
                         @include alignCenter();
 
@@ -128,6 +134,7 @@ main {
                 > .conditions {
                     > p {
                         @include alignCenter();
+                        font-size: 14px;
                         padding-left: 1em;
                         text-indent: -1em;
                         color: darken($light-color, 50%);
