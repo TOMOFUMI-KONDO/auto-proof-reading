@@ -1,7 +1,7 @@
 $content-max-width: 1180px; //mainコンテンツの最大幅
 
-$main-color: #60A8A6; //メインカラー
-$accent-color: #A87960; //アクセントカラー
+$main-color: #569694; //メインカラー
+$accent-color: #966D56; //アクセントカラー
 $click-color: #0e0ecc; //リンクなど、クリックで何らかのイベントが発生することを示すカラー
 $dark-color: #111; //文字や背景に使う
 $light-color: #f5f5f5; //文字や背景に使う
@@ -15,12 +15,30 @@ $breakpoints: (
 
 //h2タグのスタイル指定
 @mixin h2() {
-
+    margin-top: 50px;
+    padding-left: 10px;
+    border-left: $main-color solid 10px;
+    border-bottom: $main-color solid 2px;
+    color: $main-color;
 }
 
 //h3タグのスタイル指定
 @mixin h3() {
+    margin-top: 40px;
 
+    &:before {
+        content: "\025a0"; //■
+        margin-right: 3px;
+        color: $accent-color;
+        font-size: 20px;
+    }
+}
+
+@mixin h4() {
+    margin-top: 30px;
+    padding: 5px 16px;
+    border-top: $main-color solid 1px;
+    border-bottom: $main-color solid 1px;
 }
 
 //block要素を中央ぞろえ（引数にwidthを指定）
@@ -31,7 +49,6 @@ $breakpoints: (
 
 //クリックできることを示すUI
 @mixin click_me() {
-    display: inline-block;
     color: $click-color;
     text-decoration: underline;
     cursor: pointer;

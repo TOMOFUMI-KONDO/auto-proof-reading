@@ -20,10 +20,11 @@
 
 body {
   margin: 0;
+  background-color: #f5f5f5;
 }
 
 header {
-  background-color: #60A8A6;
+  background-color: #569694;
 }
 
 header h1 {
@@ -35,9 +36,35 @@ header h1 {
 }
 
 main {
-  max-width: 1180px;
   width: 90%;
   margin: 20px auto;
+  max-width: 1180px;
+}
+
+main > article h2 {
+  margin-top: 50px;
+  padding-left: 10px;
+  border-left: #569694 solid 10px;
+  border-bottom: #569694 solid 2px;
+  color: #569694;
+}
+
+main > article h3 {
+  margin-top: 40px;
+}
+
+main > article h3:before {
+  content: "\25A0";
+  margin-right: 3px;
+  color: #966D56;
+  font-size: 20px;
+}
+
+main > article h4 {
+  margin-top: 30px;
+  padding: 5px 16px;
+  border-top: #569694 solid 1px;
+  border-bottom: #569694 solid 1px;
 }
 
 main > article button {
@@ -47,7 +74,7 @@ main > article button {
   border: none;
   cursor: pointer;
   text-align: center;
-  background-color: #A87960;
+  background-color: #966D56;
   color: #f5f5f5;
   font-size: 18px;
   font-weight: bold;
@@ -74,6 +101,11 @@ main > article .hide {
   display: none;
 }
 
+main > article > .calibrated .before_rep {
+  width: 90%;
+  margin: 20px auto;
+}
+
 main > article > .calibrated .before_rep > p {
   width: 90%;
   margin: 20px auto;
@@ -86,6 +118,11 @@ main > article > .calibrated .before_rep > p .replaced {
   color: #0000ff;
 }
 
+main > article > .calibrated .after_rep {
+  width: 90%;
+  margin: 20px auto;
+}
+
 main > article > .calibrated .after_rep > p {
   width: 90%;
   margin: 20px auto;
@@ -96,6 +133,11 @@ main > article > .calibrated .after_rep > p {
 
 main > article > .calibrated .after_rep > p .replaced {
   color: #ff0000;
+}
+
+main > article > .form > form {
+  width: 90%;
+  margin: 20px auto;
 }
 
 main > article > .form > form > .sentence .submit_type {
@@ -113,6 +155,12 @@ main > article > .form > form > .sentence .text_upload {
   margin: 20px auto;
 }
 
+main > article > .form > form > .conditions > p {
+  width: 90%;
+  margin: 20px auto;
+  color: #767575;
+}
+
 main > article > .form > form > .conditions > .text_conditions {
   width: 90%;
   margin: 20px auto;
@@ -122,6 +170,8 @@ main > article > .form > form > .conditions > .text_conditions > div {
   display: -webkit-box;
   display: flex;
   justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 @media screen and (max-width: 1179px) {
@@ -163,8 +213,16 @@ main > article > .form > form > .conditions > .csv_conditions {
   margin: 20px auto;
 }
 
+main > article > .form > form > .conditions > .csv_conditions > p {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > .modal_open {
+  font-size: 14px;
+}
+
 main > article > .form > form > .conditions > .csv_conditions > .modal_open > span {
-  display: inline-block;
   color: #0e0ecc;
   text-decoration: underline;
   cursor: pointer;
@@ -218,26 +276,31 @@ main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_
   display: block;
 }
 
-main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close {
-  display: inline-block;
+main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close {
   color: #0e0ecc;
   text-decoration: underline;
   cursor: pointer;
+  text-align: right;
 }
 
 @media screen and (min-width: 1180px) {
-  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close:hover {
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close:hover {
     text-decoration: none;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_close:active {
+  main > article > .form > form > .conditions > .csv_conditions > .modal > .modal_content > .modal_close:active {
     text-decoration: underline;
   }
 }
 
-main > article > .form > form > .conditions > .csv_conditions > .condition_file {
+main > article > .form > form > .conditions > .csv_conditions > div {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > div .condition_file {
   margin-bottom: 20px;
   font-size: 16px;
 }
@@ -249,7 +312,7 @@ main > article > .form > form > .submit {
   border: none;
   cursor: pointer;
   text-align: center;
-  background-color: #A87960;
+  background-color: #966D56;
   color: #f5f5f5;
   font-size: 18px;
   font-weight: bold;

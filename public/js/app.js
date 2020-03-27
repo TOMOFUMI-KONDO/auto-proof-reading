@@ -41,17 +41,19 @@ $(document).ready(function() {
     });
 
     $('#delete').on('click', function() {
-        condition_number--;
+        if (condition_number > 1) {
+            condition_number--;
 
-        $input = $('#inputs input:last-of-type');
-        $prev = $input.prev('i').prev('input');
-        $input.remove();
-        $prev.remove();
-        $('i:last-of-type').remove();
-        $('#inputs br:last-of-type').remove();
+            $input = $('#inputs input:last-of-type');
+            $prev = $input.prev('i').prev('input');
+            $input.remove();
+            $prev.remove();
+            $('i:last-of-type').remove();
+            $('#inputs br:last-of-type').remove();
 
-        $.cookie('condition_number', condition_number);
-        console.log('校正条件の数を' + condition_number + 'に変更しました。');
+            $.cookie('condition_number', condition_number);
+            console.log('校正条件の数を' + condition_number + 'に変更しました。');
+        }
     });
 
     $body = $('body');

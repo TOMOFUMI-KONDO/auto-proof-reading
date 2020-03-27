@@ -58,6 +58,7 @@
                 </section>
                 <section class="conditions">
                     <h3>校正条件の指定</h3>
+                    <p>※テキストとcsvの両方で指定することもできます。</p>
                     <section class="text_conditions">
                         <h4>テキストで指定</h4>
                         <div>
@@ -82,7 +83,7 @@
                     </section>
                     <section class="csv_conditions">
                         <h4>csvファイルで指定</h4>
-                        <p id="modal_open" class="modal_open">（<span>csvファイルの形式について</span>）</p>
+                        <p id="modal_open" class="modal_open">（ <span>csvファイルの形式について</span> ）</p>
                         <div id="modal" class="modal">
                             <div id="modal_bg" class="modal_bg"></div>
                             <div id="modal_content" class="modal_content">
@@ -95,7 +96,9 @@
                                 <p id="modal_close" class="modal_close">閉じる</p>
                             </div>
                         </div>
-                        {{ Form::file('condition_file', ['class' => 'condition_file']) }}
+                        <div>
+                            {{ Form::file('condition_file', ['class' => 'condition_file']) }}
+                        </div>
                     </section>
                 </section>
                 {{ Form::submit('校正する', ['class' => 'submit'])}}
