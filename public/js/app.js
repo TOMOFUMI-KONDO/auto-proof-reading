@@ -1,11 +1,23 @@
 $(document).ready(function() {
-     // ページリロード時にラジオボタンの値と校正形式（ファイルorテキスト）の表示が異なるバグを防ぐ処理
+     // ページ読み込み時に、選択されている校正形式を表示する。
     if ($('#submit_type_text').prop('checked') === true) {
         $('#file_upload').addClass('hide');
         $('#text_upload').removeClass('hide');
     }
 
-     // ラジオボタンで校正形式（ファイルorテキスト）の変更をする処理
+    //校正後の文章を１クリックでクリップボードにコピー
+    $('#copy').on('click', function () {
+        let $text = $('#after_rep > p').text();
+        let $textarea = $('<textarea></textarea>');
+        $textarea.text($text);
+        $(this).append($textarea);
+        $textarea.select();
+        document.execCommand('copy');
+        $textarea.remove();
+        console.log('コピーしました。');
+    });
+
+     // ラジオボタンで校正形式（ファイルorテキスト）の変更
     $('#submit_type input').on('click', function () {
         var submit_type = $('input[name="submit_type"]:checked').val();
         if (submit_type === 'file') {
@@ -23,7 +35,7 @@ $(document).ready(function() {
        $('#inputs input').val('');
    });
 
-     //校正条件の入力ボックスを増減する処理
+     //校正条件の入力ボックスを増減
     var $input;
     var $prev;
     $('#add').on('click', function () {
@@ -57,7 +69,7 @@ $(document).ready(function() {
     });
 
     $body = $('body');
-     //モーダルの表示切替を行う処理
+     //モーダルの表示切替
     $('#modal_open').on('click', function () {
         $body.css({
             'margin-right': '17px', //overflow: hiddenにすると画面のスクロールバーが消えるため、その分画面が広くなってレイアウトが動くのを相殺する。

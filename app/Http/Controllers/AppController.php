@@ -22,8 +22,8 @@ class AppController extends Controller
             'hide_file_upload' => '',
             'hide_text_upload' => 'hide',
             'condition_number' => self::$condition_number,
-            'before_rep' => '校正前',
-            'after_rep' => '校正後',
+            'before_rep' => '校正前の文章が出ます。',
+            'after_rep' => '校正後の文章が出ます。',
         ];
 
         return view('app.index', $data);
