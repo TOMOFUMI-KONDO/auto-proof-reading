@@ -11,15 +11,12 @@
 |
 */
 
-//Route::get('/', function () {
-////    return view('welcome');
-//});
-
-/**
- * トップページ
- */
+//トップページ
 Route::get('/', 'AppController@index');
 Route::post('/', 'AppController@post');
+
+//校正後の文章をダウンロードするためのコントローラにアクセス
+Route::get('download', 'DownloadController@index');
 
 /**
  * テスト用ページ（ローカルのみ）

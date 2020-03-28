@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 use App\Http\Requests\AppRequest;
+use App\StringProcessing;
+use Carbon\Carbon;
 
 /**
  * Class AppController
@@ -12,7 +16,7 @@ use App\Http\Requests\AppRequest;
 class AppController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index() {
 
@@ -25,24 +29,24 @@ class AppController extends Controller
             'condition_number' => self::$condition_number,
             'before_rep' => '校正前の文章が出ます。',
             'after_rep' => '校正後の文章が出ます。',
+            'file_name' => '',
         ];
 
         return view('app.index', $data);
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param AppRequest $request
+     * @return Factory|View
      */
     //AppRequest（フォームリクエスト）でフォームの内容をバリデーションしている。
     public function post(AppRequest $request) {
-
          //現在の校正文の入力形式を保存しておく（ファイルorテキスト）
-        if ($request->submit_type === 'file') {
+        if ($request->input('submit_type') === 'file') {
             $hide_file_upload = '';
             $hide_text_upload = 'hide';
         }
-        else if ($request->submit_type === 'text') {
+        else {
             $hide_file_upload = 'hide';
             $hide_text_upload = '';
         }
@@ -54,13 +58,13 @@ class AppController extends Controller
         }
         //テキストエリアへの入力を取得
         else {
-            $sentence = $request->sentence;
+            $sentence = $request->input('sentence');
         }
 
          //前回の校正条件の数を引継ぎ
         $this->checkCondition();
 
-         //入力が空文字だった場合の備え
+         //入力は空文字出ない前提
         $before_rep = '';
         $after_rep = '';
 
@@ -80,8 +84,8 @@ class AppController extends Controller
 
          //csvファイルの条件に従って校正する処理
         if (!empty($request->file('condition_file'))) {
-            $file_name = $request->file('condition_file')->getClientOriginalName();
-            $condition_file = $request->file('condition_file')->storeAs('condition_files', $file_name);
+            $condition_file_name = $request->file('condition_file')->getClientOriginalName();
+            $condition_file = $request->file('condition_file')->storeAs('condition_files', $condition_file_name);
             $fp = fopen(storage_path('app/') . $condition_file, 'r');
 
             while ($line = fgetcsv($fp, 1024, ',', '"')) {
@@ -92,12 +96,30 @@ class AppController extends Controller
             }
         }
 
+        //校正後の文章をダウンロードできるように、.txt形式で保存しておく。
+        $time_stamp = Carbon::now()->timestamp;
+
+        //<span>タグを無しの校正後の文章を作成
+        $plane_after_rep = str_replace('<span class="replaced">', '', $after_rep); //<span class="replaced">を削除
+        $plane_after_rep = str_replace('</span>', '', $plane_after_rep); //</span>を削除
+
+        //校正後の文字列を漢字を抜いてアルファベットに変換。
+        $roman_after_rep = StringProcessing::kanaToRoman($plane_after_rep);
+
+        //post時点でのタイムスタンプと、校正後の文字列の漢字以外をローマ字に変換した最初の10文字をつなげたものをファイル名にする。
+        $calibrated_file_name = $time_stamp . '_' . substr($roman_after_rep, 0, 10) . '.txt';
+
+        //校正後の文章をテキストファイルとして保存
+        file_put_contents(storage_path('app/public/calibrated/' . $calibrated_file_name), $plane_after_rep);
+//        Storage::disk('public')->putFileAs('calibrated', $after_rep, $calibrated_file_name);
+
         $data = [
             'hide_file_upload' => $hide_file_upload,
             'hide_text_upload' => $hide_text_upload,
             'condition_number' => self::$condition_number,
-            'before_rep' => $before_rep !== '' ? $before_rep : '校正前',
-            'after_rep' => $after_rep !== '' ? $after_rep : '校正後',
+            'before_rep' => $before_rep !== '' ? $before_rep : '校正前の文章が出ます。',
+            'after_rep' => $after_rep !== '' ? $after_rep : '校正後の文章が出ます。', //入力は空文字でない前提
+            'file_name' => $calibrated_file_name,
         ];
         $request->flash();
 
