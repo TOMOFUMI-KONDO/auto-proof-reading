@@ -14,7 +14,12 @@ $(document).ready(function() {
         $textarea.select();
         document.execCommand('copy');
         $textarea.remove();
-        console.log('コピーしました。');
+        //toastrプラグインを使ってトーストを表示
+        toastr.options = {
+            'positionClass': 'toast-top-center', //画面上部中央に表示
+            'timeOut': '1000', //表示時間2s
+        };
+        toastr.success('校正後の文章をコピーしました。');
     });
 
      // ラジオボタンで校正形式（ファイルorテキスト）の変更

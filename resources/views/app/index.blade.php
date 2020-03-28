@@ -3,24 +3,18 @@
 @section('head')
 {{--    コントローラから受け取った$condition_numberをjavascriptに渡す。--}}
     <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
-    @component('components.head')
-        @slot('title')
-            自動校正サービス
-        @endslot
-        @slot('css')
-            app
-        @endslot
-        @slot('js')
-            app
-        @endslot
+    @component('components.head',
+      ['title' => '自動校正サービス',
+      'cssFiles' => ['app', 'plugin/toastr/toastr.min'],
+      'jsFiles' => ['app', 'plugin/toastr/toastr.min']]
+    )
     @endcomponent
 @endsection
 
 @section('header')
-    @component('components.header')
-        @slot('h1')
-            自動校正サービス
-        @endslot
+    @component('components.header',
+      ['h1' => '自動校正サービス']
+    )
     @endcomponent
 @endsection
 
