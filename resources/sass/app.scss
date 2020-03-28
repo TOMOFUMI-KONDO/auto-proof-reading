@@ -82,9 +82,16 @@ main {
                 }
 
                 > div {
-                    text-align: right;
+                    display: flex;
+                    justify-content: center;
+
+                    @include mediaQuery(smp) {
+                        flex-direction: column;
+                        align-items: center;
+                    }
 
                     > button {
+                        max-width: 200px;
                         padding: 10px 25px;
                     }
                 }
@@ -100,7 +107,7 @@ main {
                         @include alignCenter();
                         color: red;
                     }
-                  
+
                     > .submit_type {
                         @include alignCenter();
 

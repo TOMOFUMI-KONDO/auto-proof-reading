@@ -140,10 +140,24 @@ main > article > .calibrated .after_rep > p .replaced {
 }
 
 main > article > .calibrated .after_rep > div {
-  text-align: right;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .calibrated .after_rep > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-align: center;
+            align-items: center;
+  }
 }
 
 main > article > .calibrated .after_rep > div > button {
+  max-width: 200px;
   padding: 10px 25px;
 }
 

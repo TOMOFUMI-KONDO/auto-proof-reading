@@ -22,6 +22,11 @@ $(document).ready(function() {
         toastr.success('校正後の文章をコピーしました。');
     });
 
+    //校正後の文章をダウンロードするためのコントローラにアクセス
+    $('#download').on('click', function () {
+        location.href = '/download?file-name=' + $file_name;
+    });
+
      // ラジオボタンで校正形式（ファイルorテキスト）の変更
     $('#submit_type input').on('click', function () {
         var submit_type = $('input[name="submit_type"]:checked').val();
@@ -44,22 +49,22 @@ $(document).ready(function() {
     var $input;
     var $prev;
     $('#add').on('click', function () {
-        condition_number++;
+        $condition_number++;
 
         $(
-            '<input name="before_str' + condition_number + '" type="text" value="" style="margin-right: 5px; ">' +
+            '<input name="before_str' + $condition_number + '" type="text" value="" style="margin-right: 5px; ">' +
             '<i class="fas fa-arrow-right" style="width: 20px"></i>' +
-            '<input name="after_str' + condition_number + '" type="text" value="">' +
+            '<input name="after_str' + $condition_number + '" type="text" value="">' +
             '<br />'
         ).appendTo('#inputs');
 
-        $.cookie('condition_number', condition_number);
-        console.log('校正条件の数を' + condition_number + 'に変更しました。');
+        $.cookie('condition_number', $condition_number);
+        console.log('校正条件の数を' + $condition_number + 'に変更しました。');
     });
 
     $('#delete').on('click', function() {
-        if (condition_number > 1) {
-            condition_number--;
+        if ($condition_number > 1) {
+            $condition_number--;
 
             $input = $('#inputs input:last-of-type');
             $prev = $input.prev('i').prev('input');
@@ -68,8 +73,8 @@ $(document).ready(function() {
             $('i:last-of-type').remove();
             $('#inputs br:last-of-type').remove();
 
-            $.cookie('condition_number', condition_number);
-            console.log('校正条件の数を' + condition_number + 'に変更しました。');
+            $.cookie('condition_number', $condition_number);
+            console.log('校正条件の数を' + $condition_number + 'に変更しました。');
         }
     });
 

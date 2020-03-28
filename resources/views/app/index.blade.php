@@ -1,8 +1,11 @@
 @extends('layouts.default')
 
 @section('head')
-{{--    コントローラから受け取った$condition_numberをjavascriptに渡す。--}}
-    <script type="text/javascript">var condition_number = "{{ $condition_number }}"</script>
+{{--        コントローラから渡された変数をjavascriptに渡すために変数を定義して値を代入--}}
+<script type="text/javascript">
+    let $condition_number = "{{ $condition_number }}";
+    let $file_name = "{{ $file_name }}";
+</script>
     @component('components.head',
       ['title' => '自動校正サービス',
       'cssFiles' => ['app', 'plugin/toastr/toastr.min'],
@@ -20,22 +23,27 @@
 
 @section('main')
     <article>
-        <section class="calibrated">
-            <h2>校正前後の文章</h2>
-            <section class="before_rep">
-                <h3>校正前</h3>
-                <p>{!! nl2br($before_rep) !!}</p>
+        @if ($file_name !== '')
+            <section class="calibrated">
+                <h2>校正前後の文章</h2>
+                <section class="before_rep">
+                    <h3>校正前</h3>
+                    <p>{!! nl2br($before_rep) !!}</p>
+                </section>
+                <section id="after_rep" class="after_rep">
+                    <h3>校正後</h3>
+                    <p>{!! nl2br($after_rep) !!}</p>
+    {{--                文章を校正した時だけ表示--}}
+                        <div>
+                            <button type="button" id="copy">クリップボードにコピー</button>
+                            <button type="button" id="download">テキストファイルをダウンロード</button>
+                        </div>
+                </section>
             </section>
-            <section id="after_rep" class="after_rep">
-                <h3>校正後</h3>
-                <p>{!! nl2br($after_rep) !!}</p>
-                <div><button type="button" id="copy">copy</button></div>
-            </section>
-        </section>
+        @endif
         <section class="form">
             <h2>文章を校正する</h2>
-            <form method="POST" action="/" enctype="multipart/form-data">
-                @csrf
+            {{ Form::open(['files' => true]) }}
                 <section class="sentence">
                     <h3>校正する文章の入力</h3>
                     @if ($errors->has('sentence'))
@@ -104,7 +112,7 @@
                     </section>
                 </section>
                 {{ Form::submit('校正する', ['class' => 'submit'])}}
-            </form>
+            {{ Form::close() }}
         </section>
     </article>
 @endsection
