@@ -13,6 +13,7 @@
 }
 
 body {
+    box-sizing: border-box;
     margin: 0;
     background-color: $light-color;
     color: $dark-color;
@@ -110,39 +111,115 @@ main {
 
                     > .submit_type {
                         @include alignCenter();
+                        display: flex;
+                        margin-bottom: 0;
 
                         > div {
-                            @include mediaQuery(pc) {
-                                display: inline-block;
-                            }
+                            > label {
+                                @include button();
+                                position: relative;
+                                margin: 0;
+                                padding: 10px 20px;
+                                background-color: lighten($accent-color, 20%);
+                                font-size: 16px;
 
-                            &:first-of-type {
+                                //透明度を強くするのではなく色を濃くしてクリックできることを示す。
+                                @include mediaQuery(pc) {
+                                    &:hover {
+                                        opacity: 1;
+                                    }
+                                }
+
                                 @include mediaQuery(tab) {
-                                    margin-bottom: 10px;
+                                    &:active {
+                                        opacity: 1;
+                                    }
+                                }
+
+                                &:before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 50%;
+                                    transform: translate(-50%, 0);
+                                    border: transparent solid 15px;
+                                    border-top: lighten($accent-color, 20%)  solid 15px;
                                 }
                             }
 
-                            > label:first-of-type {
-                                @include mediaQuery(pc) {
-                                    margin-right: 30px;
+                            > input[type=radio] {
+                                display: none;
+
+                                &:checked {
+                                    + label {
+                                        background-color: $accent-color; //選択されている事が分かるように色を変える。
+                                        cursor: default;
+                                        -webkit-tap-highlight-color: rgba(0,0,0,0); //active字の青い背景を消す。
+
+                                        &:before {
+                                            border-top: $accent-color solid 15px;
+                                        }
+                                    }
+                                }
+
+                                &:not(:checked) {
+                                    + label {
+                                        @include mediaQuery(pc) {
+                                            &:hover {
+                                                background-color: darken($accent-color, 20%);
+
+                                                &:before {
+                                                    border-top: darken($accent-color, 20%) solid 15px;
+                                                }
+                                            }
+                                        }
+
+                                        @include mediaQuery(tab) {
+                                            &:active {
+                                                background-color: darken($accent-color, 20%);
+
+                                                &:before {
+                                                    border-top: darken($accent-color, 20%) solid 15px;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
 
                     > .file_upload {
-                        @include alignCenter();
+                        @include alignCenter(calc(90% - 40px));
+                        margin-top: 0;
+                        padding: 20px;
+                        background-color: $accent-color;
 
                         > input {
                             font-size: 16px;
+                            color: $light-color;
+
+                            @include mediaQuery(smp) {
+                                height: 35px;
+                                font-size: 13px;
+
+                                &::-webkit-file-upload-button{
+                                    height: 35px;
+                                }
+                            }
                         }
                     }
 
                     > .text_upload {
-                        @include alignCenter();
+                        @include alignCenter(calc(90% - 40px));
+                        margin-top: 0;
+                        padding: 20px;
+                        background-color: $accent-color;
 
                         > textarea {
-                            @include alignCenter()
+                            display: block;
+                            width: 90%;
+                            margin: 5px auto 0 auto;
                         }
                     }
                 }
