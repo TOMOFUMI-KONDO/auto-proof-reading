@@ -6,8 +6,7 @@
 }
 
 @media screen and (max-width: 1179px) {
-  .pc,
-  .smp:not(.tab) {
+  .pc {
     display: none;
   }
 }
@@ -53,6 +52,7 @@ main > article h2 {
 
 main > article h3 {
   margin-top: 40px;
+  font-size: 18px;
 }
 
 main > article h3:before {
@@ -168,6 +168,18 @@ main > article > .form > form {
   margin: 20px auto;
 }
 
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > h3 {
+    padding-left: 18px;
+    text-indent: -18px;
+  }
+}
+
+main > article > .form > form > .sentence > h3 > span {
+  font-size: 14px;
+  font-weight: normal;
+}
+
 main > article > .form > form > .sentence > .error {
   width: 90%;
   margin: 20px auto;
@@ -180,6 +192,20 @@ main > article > .form > form > .sentence > .submit_type {
   display: -webkit-box;
   display: flex;
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .submit_type {
+    display: -webkit-box;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .submit_type > div {
+    -webkit-box-flex: 0;
+            flex: 0 0 50%;
+  }
 }
 
 main > article > .form > form > .sentence > .submit_type > div > label {
@@ -223,6 +249,13 @@ main > article > .form > form > .sentence > .submit_type > div > label {
 @media screen and (max-width: 1179px) {
   main > article > .form > form > .sentence > .submit_type > div > label:active {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .submit_type > div > label {
+    width: 100%;
+    padding: 10px 0;
   }
 }
 
