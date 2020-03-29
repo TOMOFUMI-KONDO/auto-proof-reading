@@ -52,7 +52,7 @@
                     <div id="submit_type" class="submit_type">
                         <div>
                             {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
-                            {{ Form::label('submit_type_file', 'ファイルをアップロードする') }}
+                            {{ Form::label('submit_type_file', 'ファイルを提出する') }}
                         </div>
                         <div>
                             {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text'])}}

@@ -94,6 +94,7 @@ $breakpoints: (
     font-size: 18px;
     font-weight: bold;
     outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 
     @include change_opacity();
 }

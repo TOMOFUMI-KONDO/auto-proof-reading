@@ -19,6 +19,7 @@
 }
 
 body {
+  box-sizing: border-box;
   margin: 0;
   background-color: #f5f5f5;
   color: #111;
@@ -80,6 +81,7 @@ main > article button {
   font-size: 18px;
   font-weight: bold;
   outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 @media screen and (min-width: 1180px) {
@@ -175,43 +177,136 @@ main > article > .form > form > .sentence > .error {
 main > article > .form > form > .sentence > .submit_type {
   width: 90%;
   margin: 20px auto;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 0;
+}
+
+main > article > .form > form > .sentence > .submit_type > div > label {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  background-color: #966D56;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  margin: 0;
+  padding: 10px 20px;
+  background-color: #c0a292;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 1180px) {
-  main > article > .form > form > .sentence > .submit_type > div {
-    display: inline-block;
+  main > article > .form > form > .sentence > .submit_type > div > label:hover {
+    opacity: 0.7;
   }
 }
 
 @media screen and (max-width: 1179px) {
-  main > article > .form > form > .sentence > .submit_type > div:first-of-type {
-    margin-bottom: 10px;
+  main > article > .form > form > .sentence > .submit_type > div > label:active {
+    opacity: 0.7;
   }
 }
 
 @media screen and (min-width: 1180px) {
-  main > article > .form > form > .sentence > .submit_type > div > label:first-of-type {
-    margin-right: 30px;
+  main > article > .form > form > .sentence > .submit_type > div > label:hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1179px) {
+  main > article > .form > form > .sentence > .submit_type > div > label:active {
+    opacity: 1;
+  }
+}
+
+main > article > .form > form > .sentence > .submit_type > div > label:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  border: transparent solid 15px;
+  border-top: #c0a292 solid 15px;
+}
+
+main > article > .form > form > .sentence > .submit_type > div > input[type=radio] {
+  display: none;
+}
+
+main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:checked + label {
+  background-color: #966D56;
+  cursor: default;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:checked + label:before {
+  border-top: #966D56 solid 15px;
+}
+
+@media screen and (min-width: 1180px) {
+  main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:not(:checked) + label:hover {
+    background-color: #553e31;
+  }
+
+  main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:not(:checked) + label:hover:before {
+    border-top: #553e31 solid 15px;
+  }
+}
+
+@media screen and (max-width: 1179px) {
+  main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:not(:checked) + label:active {
+    background-color: #553e31;
+  }
+
+  main > article > .form > form > .sentence > .submit_type > div > input[type=radio]:not(:checked) + label:active:before {
+    border-top: #553e31 solid 15px;
   }
 }
 
 main > article > .form > form > .sentence > .file_upload {
-  width: 90%;
+  width: calc(90% - 40px);
   margin: 20px auto;
+  margin-top: 0;
+  padding: 20px;
+  background-color: #966D56;
 }
 
 main > article > .form > form > .sentence > .file_upload > input {
   font-size: 16px;
+  color: #f5f5f5;
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .file_upload > input {
+    height: 35px;
+    font-size: 13px;
+  }
+
+  main > article > .form > form > .sentence > .file_upload > input::-webkit-file-upload-button {
+    height: 35px;
+  }
 }
 
 main > article > .form > form > .sentence > .text_upload {
-  width: 90%;
+  width: calc(90% - 40px);
   margin: 20px auto;
+  margin-top: 0;
+  padding: 20px;
+  background-color: #966D56;
 }
 
 main > article > .form > form > .sentence > .text_upload > textarea {
+  display: block;
   width: 90%;
-  margin: 20px auto;
+  margin: 5px auto 0 auto;
 }
 
 main > article > .form > form > .conditions > p {
@@ -400,6 +495,7 @@ main > article > .form > form > .submit {
   font-size: 18px;
   font-weight: bold;
   outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   width: 90%;
   margin: 20px auto;
   display: block;
