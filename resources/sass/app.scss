@@ -104,6 +104,18 @@ main {
                 @include alignCenter();
 
                 > .sentence {
+                    > h3 {
+                        @include mediaQuery(smp) {
+                            padding-left: 18px;
+                            text-indent: -18px;
+                        }
+
+                        > span {
+                            font-size: 14px;
+                            font-weight: normal;
+                        }
+                    }
+
                     > .error {
                         @include alignCenter();
                         color: red;
@@ -114,7 +126,15 @@ main {
                         display: flex;
                         margin-bottom: 0;
 
+                        @include mediaQuery(smp) {
+                            display: flex;
+                        }
+
                         > div {
+                            @include mediaQuery(smp) {
+                                flex: 0 0 50%;
+                            }
+
                             > label {
                                 @include button();
                                 position: relative;
@@ -134,6 +154,11 @@ main {
                                     &:active {
                                         opacity: 1;
                                     }
+                                }
+
+                                @include mediaQuery(smp) {
+                                    width: 100%;
+                                    padding: 10px 0;
                                 }
 
                                 &:before {
