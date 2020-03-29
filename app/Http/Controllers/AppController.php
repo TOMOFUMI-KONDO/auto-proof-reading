@@ -35,8 +35,10 @@ class AppController extends Controller
     }
 
     /**
+     * フォームの内容のバリデーションはAppRequestで行う。
      * @param AppRequest $request
      * @return Factory|View
+     * @throws \Illuminate\Validation\ValidationException
      */
     //フォームの内容のバリデーションはAppRequestで行う。
     public function post(AppRequest $request) {

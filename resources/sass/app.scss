@@ -162,6 +162,11 @@ main {
                                     padding: 10px 0;
                                 }
 
+                                @include mediaQuery(smp) {
+                                    width: 100%;
+                                    padding: 10px 0;
+                                }
+
                                 &:before {
                                     content: "";
                                     position: absolute;

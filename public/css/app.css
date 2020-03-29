@@ -248,6 +248,13 @@ main > article > .form > form > .sentence > .submit_type > div > label {
   }
 }
 
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .submit_type > div > label {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
 main > article > .form > form > .sentence > .submit_type > div > label:before {
   content: "";
   position: absolute;
