@@ -17,3 +17,6 @@ resources/views/test/index.blade.php
 public/js/test.js
 resources/sass/test.scss
 public/css/test.css
+
+!public/storage/calibrated/
+!public/storage/.gitignore
