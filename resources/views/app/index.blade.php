@@ -5,6 +5,8 @@
 <script type="text/javascript">
     let $condition_number = "{{ $condition_number }}";
     let $file_name = "{{ $file_name }}";
+    let $is_docx = "{{ $is_docx }}";
+    {{--let $plain_after_rep = "{{ $plain_after_rep }}";--}}
 </script>
     @component('components.head',
       ['title' => '自動校正サービス',
@@ -45,7 +47,7 @@
             <h2>文章を校正する</h2>
             {{ Form::open(['files' => true]) }}
                 <section class="sentence">
-                    <h3>校正する文章の入力<br class="smp" /><span>（ファイルは1.5MBまで）</span></h3>
+                    <h3>校正する文章の入力<br class="smp" /><span>（ファイルサイズは1.5MBまで）</span></h3>
                     @if ($errors->has('sentence'))
                         <p class="error bold">{{ $errors->first('sentence') }}</p>
                     @endif

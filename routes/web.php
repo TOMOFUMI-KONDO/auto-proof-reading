@@ -17,6 +17,7 @@ Route::post('/', 'AppController@post');
 
 //校正後の文章をダウンロードするためのコントローラにアクセス
 Route::get('download', 'DownloadController@index');
+Route::get('download/docx', 'DownloadController@docx');
 
 /**
  * テスト用ページ（ローカルのみ）

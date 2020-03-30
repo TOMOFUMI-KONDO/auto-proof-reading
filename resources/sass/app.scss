@@ -128,6 +128,7 @@ main {
 
                         @include mediaQuery(smp) {
                             display: flex;
+                            width: 100%;
                         }
 
                         > div {
@@ -144,17 +145,17 @@ main {
                                 font-size: 16px;
 
                                 //透明度を強くするのではなく色を濃くしてクリックできることを示す。
-                                @include mediaQuery(pc) {
-                                    &:hover {
-                                        opacity: 1;
-                                    }
-                                }
-
-                                @include mediaQuery(tab) {
-                                    &:active {
-                                        opacity: 1;
-                                    }
-                                }
+                                //@include mediaQuery(pc) {
+                                //    &:hover {
+                                //        opacity: 1;
+                                //    }
+                                //}
+                                //
+                                //@include mediaQuery(tab) {
+                                //    &:active {
+                                //        opacity: 1;
+                                //    }
+                                //}
 
                                 @include mediaQuery(smp) {
                                     width: 100%;
@@ -220,6 +221,11 @@ main {
                         padding: 20px;
                         background-color: $accent-color;
 
+                        @include mediaQuery(smp) {
+                            box-sizing: border-box;
+                            width: 100%;
+                        }
+
                         > input {
                             font-size: 16px;
                             color: $light-color;
@@ -240,6 +246,11 @@ main {
                         margin-top: 0;
                         padding: 20px;
                         background-color: $accent-color;
+
+                        @include mediaQuery(smp) {
+                            box-sizing: border-box;
+                            width: 100%;
+                        }
 
                         > textarea {
                             display: block;

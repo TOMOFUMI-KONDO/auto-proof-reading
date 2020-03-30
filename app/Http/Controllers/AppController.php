@@ -28,19 +28,22 @@ class AppController extends Controller
             'before_rep' => '校正前の文章が出ます。',
             'after_rep' => '校正後の文章が出ます。',
             'file_name' => '',
+            'is_docx' => false,
         ];
 
         return view('app.index', $data);
     }
 
     /**
-     * フォームの内容のバリデーションはAppRequestで行う。
      * @param AppRequest $request
      * @return Factory|View
-     * @throws \Illuminate\Validation\ValidationException
      */
+    //フォームの内容のバリデーションはAppRequestで行う。
     public function post(AppRequest $request) {
          //現在の校正文の入力形式（ファイルorテキスト）を保存&形式（ファイルorテキスト）ごとの文章の内容の取得処理
+
+        //提出されたファイルがwordファイルであることを示すフラグを定義
+        $is_docx = false;
 
         //ファイルをアップロードされた場合
         if ($request->input('submit_type') === 'file') {
@@ -53,12 +56,13 @@ class AppController extends Controller
             }
             //.docxファイルの場合
             else {
+                $is_docx = true; //wordファイルが提出されたことを示すフラグを立てる。
                 $sentence = '';
                 $file_path = $request->file('sentence')->getRealPath();
-                $zip = new \ZipArchive(); //wordファイルを解凍
+                $zip = new \ZipArchive();
 
                 if ($zip->open($file_path) === true) {
-                    $xml = $zip->getFromName("word/document.xml"); //解凍したフォルダからdocument.xml（文書の内容を記すxmlファイル）を取得
+                    $xml = $zip->getFromName("word/document.xml"); //wordファイルを解凍し、document.xml（文書の内容を記すxmlファイル）を取得
                     if ($xml) {
                         $dom = new \DOMDocument();
                         $dom->loadXML($xml);
@@ -71,6 +75,7 @@ class AppController extends Controller
                             //Add New Line after a paragraph.
                             $sentence .= "\n";
                         }
+                        $sentence = rtrim($sentence, "\n"); //末尾の改行文字は除去
                     }
                 }
             }
@@ -117,29 +122,31 @@ class AppController extends Controller
             }
         }
 
-        //校正後の文章をダウンロードできるように、.txt形式で保存しておく。
+        //ダウンロード用のファイル名に利用するため、タイムスタンプを取得
         $time_stamp = Carbon::now()->timestamp;
 
-        //<span>タグを無しの校正後の文章を作成
-        $plane_after_rep = str_replace('<span class="replaced">', '', $after_rep); //<span class="replaced">を削除
-        $plane_after_rep = str_replace('</span>', '', $plane_after_rep); //</span>を削除
+        //<span>タグを無しの校正後の文章を取得
+        $plain_after_rep = str_replace('<span class="replaced">', '', $after_rep); //<span class="replaced">を削除
+        $plain_after_rep = str_replace('</span>', '', $plain_after_rep); //</span>を削除
 
         //校正後の文字列を漢字を抜いてアルファベットに変換。
-        $roman_after_rep = StringProcessing::kanaToRoman($plane_after_rep);
+        $roman_after_rep = StringProcessing::kanaToRoman($plain_after_rep);
 
         //post時点でのタイムスタンプと、校正後の文字列の漢字以外をローマ字に変換した最初の10文字をつなげたものをファイル名にする。
-        $calibrated_file_name = $time_stamp . '_' . substr($roman_after_rep, 0, 10) . '.txt';
+        $calibrated_file_name = $time_stamp . '_' . substr($roman_after_rep, 0, 10);
 
-        //校正後の文章をテキストファイルとして保存
-        file_put_contents(storage_path('app/public/calibrated/' . $calibrated_file_name), $plane_after_rep);
+       //校正後の文章をテキストファイルとして保存
+        $calibrated_file_name = $calibrated_file_name . '.txt';
+        file_put_contents(storage_path('app/public/calibrated/' . $calibrated_file_name), $plain_after_rep);
 
         $data = [
-            'hide_file_upload' => $hide_file_upload,
-            'hide_text_upload' => $hide_text_upload,
-            'condition_number' => self::$condition_number,
+            'hide_file_upload' => $hide_file_upload ?? '',
+            'hide_text_upload' => $hide_text_upload ?? '',
+            'condition_number' => self::$condition_number ?? 5,
             'before_rep' => $before_rep !== '' ? $before_rep : '校正前の文章が出ます。',
             'after_rep' => $after_rep !== '' ? $after_rep : '校正後の文章が出ます。', //入力は空文字でない前提
-            'file_name' => $calibrated_file_name,
+            'file_name' => $calibrated_file_name ?? '',
+            'is_docx' => $is_docx ?? false,
         ];
         $request->flash();
 
