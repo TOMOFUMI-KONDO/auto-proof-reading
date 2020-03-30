@@ -13,7 +13,11 @@
     <script src="{{ asset('js/jquery.cookie.js') }}"></script>
 @endif
 @if(app('env') === 'production')
-    <link rel="stylesheet" href="{{ secure_asset('css') }}/{{$cssFile}}.css">
-    <script type="text/javascript" src="{{ secure_asset('js') }}/{{$jsFile}}.js"></script>
+    @foreach ($cssFiles as $cssFile)
+        <link rel="stylesheet" href="{{ secure_asset('css') }}/{{$cssFile}}.css">
+    @endforeach
+    @foreach ($jsFiles as $jsFile)
+        <script type="text/javascript" src="{{ secure_asset('js') }}/{{$jsFile}}.js"></script>
+    @endforeach
     <script src="{{ secure_asset('js/jquery.cookie.js') }}"></script>
 @endif
