@@ -34,9 +34,8 @@ $(document).ready(function() {
 
     //校正後の文章をダウンロードするためのコントローラにアクセス
     $('#download').on('click', function () {
-        console.log(process.env.MIX_APP_ENV);
         //localと本番でダウンロード先URLを変える。
-        if(process.env.MIX_APP_ENV === 'local') {
+        if($app_env === 'local') {
             $check_env = '/';
         } else {
             $check_env = '';

@@ -22,6 +22,7 @@ class AppController extends Controller
         self::checkCondition();
 
         $data = [
+            'app_env' => app('env'),
             'hide_file_upload' => '',
             'hide_text_upload' => 'hide',
             'condition_number' => self::$condition_number,
@@ -140,6 +141,7 @@ class AppController extends Controller
         file_put_contents(storage_path('app/public/calibrated/' . $calibrated_file_name), $plain_after_rep);
 
         $data = [
+            'app_env' => app('env'),
             'hide_file_upload' => $hide_file_upload ?? '',
             'hide_text_upload' => $hide_text_upload ?? '',
             'condition_number' => self::$condition_number ?? 5,

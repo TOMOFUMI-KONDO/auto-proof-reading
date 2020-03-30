@@ -19270,11 +19270,12 @@ $(document).ready(function () {
   }); //校正後の文章をダウンロードするためのコントローラにアクセス
 
   $('#download').on('click', function () {
-    console.log("local"); //localと本番でダウンロード先URLを変える。
-
-    if (true) {
+    //localと本番でダウンロード先URLを変える。
+    if ($app_env === 'local') {
       $check_env = '/';
-    } else {} //txtファイルをダウンロード
+    } else {
+      $check_env = '';
+    } //txtファイルをダウンロード
 
 
     if ($is_docx !== "1") {

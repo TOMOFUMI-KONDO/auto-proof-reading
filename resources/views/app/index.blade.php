@@ -3,10 +3,10 @@
 @section('head')
 {{--        コントローラから渡された変数をjavascriptに渡すために変数を定義して値を代入--}}
 <script type="text/javascript">
+    let $app_env = "{{ $app_env }}";
     let $condition_number = "{{ $condition_number }}";
     let $file_name = "{{ $file_name }}";
     let $is_docx = "{{ $is_docx }}";
-    {{--let $plain_after_rep = "{{ $plain_after_rep }}";--}}
 </script>
     @component('components.head',
       ['title' => '自動校正サービス',
