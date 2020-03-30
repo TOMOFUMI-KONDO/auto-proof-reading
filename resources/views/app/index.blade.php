@@ -45,7 +45,13 @@
         @endif
         <section class="form">
             <h2>文章を校正する</h2>
-            {{ Form::open(['files' => true]) }}
+            @if (app('env') === 'production')
+                <form method="POST" action="https://tomo-kon-service.com/auto-proof-reading/" accept-charset="UTF-8" enctype="multipart/form-data">
+                @csrf
+            @endif
+            @if (app('env') === 'local')
+                {{ Form::open(['files' => true]) }}
+            @endif
                 <section class="sentence">
                     <h3>校正する文章の入力<br class="smp" /><span>（ファイルサイズは1.5MBまで）</span></h3>
                     @if ($errors->has('sentence'))
