@@ -13,7 +13,7 @@
     <script src="{{ asset('js/jquery.cookie.js') }}"></script>
 @endif
 @if(app('env') === 'production')
-    <link rel="stylesheet" href="{{ secure_asset('css') }}/{{$css}}.css">
-    <script type="text/javascript" src="{{ secure_asset('js') }}/{{$js}}.js"></script>
+    <link rel="stylesheet" href="{{ secure_asset('css') }}/{{$cssFile}}.css">
+    <script type="text/javascript" src="{{ secure_asset('js') }}/{{$jsFile}}.js"></script>
     <script src="{{ secure_asset('js/jquery.cookie.js') }}"></script>
 @endif
