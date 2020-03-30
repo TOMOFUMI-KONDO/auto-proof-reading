@@ -32,14 +32,21 @@ $(document).ready(function() {
 
     //校正後の文章をダウンロードするためのコントローラにアクセス
     $('#download').on('click', function () {
+        //localと本番でダウンロード先URLを変える。
+        if(process.env.MIX_APP_ENV === 'local') {
+            $check_env = '/';
+        } else {
+            $check_env = '';
+        }
+
         //txtファイルをダウンロード
         if ($is_docx !== "1") {
-            location.href = '/download?file-name=' + $file_name;
+            location.href = $check_env + 'download?file-name=' + $file_name;
         }
         //docxファイルをダウンロード
         else {
             //コントローラから受け取った校正後の文章を代入
-            location.href = '/download/docx?file-name=' + $file_name;
+            location.href = $check_env + 'download/docx?file-name=' + $file_name;
         }
     });
 
