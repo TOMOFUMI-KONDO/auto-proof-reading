@@ -86,13 +86,13 @@ main > article button {
 
 @media screen and (min-width: 1180px) {
   main > article button:hover {
-    opacity: 0.7;
+    background-color: #553e31;
   }
 }
 
 @media screen and (max-width: 1179px) {
   main > article button:active {
-    opacity: 0.7;
+    background-color: #553e31;
   }
 }
 
@@ -198,6 +198,7 @@ main > article > .form > form > .sentence > .submit_type {
   main > article > .form > form > .sentence > .submit_type {
     display: -webkit-box;
     display: flex;
+    width: 100%;
   }
 }
 
@@ -230,25 +231,13 @@ main > article > .form > form > .sentence > .submit_type > div > label {
 
 @media screen and (min-width: 1180px) {
   main > article > .form > form > .sentence > .submit_type > div > label:hover {
-    opacity: 0.7;
+    background-color: #553e31;
   }
 }
 
 @media screen and (max-width: 1179px) {
   main > article > .form > form > .sentence > .submit_type > div > label:active {
-    opacity: 0.7;
-  }
-}
-
-@media screen and (min-width: 1180px) {
-  main > article > .form > form > .sentence > .submit_type > div > label:hover {
-    opacity: 1;
-  }
-}
-
-@media screen and (max-width: 1179px) {
-  main > article > .form > form > .sentence > .submit_type > div > label:active {
-    opacity: 1;
+    background-color: #553e31;
   }
 }
 
@@ -312,6 +301,13 @@ main > article > .form > form > .sentence > .file_upload {
   background-color: #966D56;
 }
 
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .file_upload {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
 main > article > .form > form > .sentence > .file_upload > input {
   font-size: 16px;
   color: #f5f5f5;
@@ -334,6 +330,13 @@ main > article > .form > form > .sentence > .text_upload {
   margin-top: 0;
   padding: 20px;
   background-color: #966D56;
+}
+
+@media screen and (max-width: 767px) {
+  main > article > .form > form > .sentence > .text_upload {
+    box-sizing: border-box;
+    width: 100%;
+  }
 }
 
 main > article > .form > form > .sentence > .text_upload > textarea {
@@ -538,13 +541,13 @@ main > article > .form > form > .submit {
 
 @media screen and (min-width: 1180px) {
   main > article > .form > form > .submit:hover {
-    opacity: 0.7;
+    background-color: #553e31;
   }
 }
 
 @media screen and (max-width: 1179px) {
   main > article > .form > form > .submit:active {
-    opacity: 0.7;
+    background-color: #553e31;
   }
 }
 

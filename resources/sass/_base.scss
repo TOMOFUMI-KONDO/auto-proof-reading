@@ -83,6 +83,20 @@ $breakpoints: (
     }
 }
 
+@mixin change_color($color: darken($accent-color, 20%)) {
+    @include mediaQuery(pc) {
+        &:hover {
+            background-color: $color;
+        }
+    }
+
+    @include mediaQuery(tab) {
+        &:active {
+            background-color: $color;
+        }
+    }
+}
+
 @mixin button() {
     display: inline-block;
     margin: 10px;
@@ -97,7 +111,7 @@ $breakpoints: (
     outline: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-    @include change_opacity();
+    @include change_color();
 }
 
 //メディアクエリの呼び出し

@@ -1,9 +1,17 @@
 $(document).ready(function() {
-     // ページ読み込み時に、選択されている校正形式を表示する。
-    if ($('#submit_type_text').prop('checked') === true) {
-        $('#file_upload').addClass('hide');
-        $('#text_upload').removeClass('hide');
+    function checkSubmitType() {
+        var $submit_type = $('input[name="submit_type"]:checked').val();
+        if ($submit_type === 'file') {
+            $('#file_upload').removeClass('hide');
+            $('#text_upload').addClass('hide');
+        } else {
+            $('#file_upload').addClass('hide');
+            $('#text_upload').removeClass('hide');
+        }
     }
+
+    // ページ読み込み時に、選択されている校正形式（txtファイル, docxファイル, テキスト）を表示する。
+    checkSubmitType();
 
     //校正後の文章を１クリックでクリップボードにコピー
     $('#copy').on('click', function () {
@@ -24,20 +32,20 @@ $(document).ready(function() {
 
     //校正後の文章をダウンロードするためのコントローラにアクセス
     $('#download').on('click', function () {
-        location.href = '/download?file-name=' + $file_name;
+        //txtファイルをダウンロード
+        if ($is_docx !== "1") {
+            location.href = '/download?file-name=' + $file_name;
+        }
+        //docxファイルをダウンロード
+        else {
+            //コントローラから受け取った校正後の文章を代入
+            location.href = '/download/docx?file-name=' + $file_name;
+        }
     });
 
-     // ラジオボタンで校正形式（ファイルorテキスト）の変更
+     // ラジオボタンを押したときに校正形式（txtファイル, docxファイル, テキスト）を変更
     $('#submit_type input').on('click', function () {
-        var submit_type = $('input[name="submit_type"]:checked').val();
-        if (submit_type === 'file') {
-            $('#file_upload').removeClass('hide');
-            $('#text_upload').addClass('hide');
-        }
-        else if (submit_type === 'text') {
-            $('#file_upload').addClass('hide');
-            $('#text_upload').removeClass('hide');
-        }
+        checkSubmitType();
     });
 
      // 校正条件の入力を全消去する処理
