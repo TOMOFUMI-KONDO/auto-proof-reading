@@ -1,14 +1,24 @@
 require('./bootstrap');
 
 $(document).ready(function() {
+
     function checkSubmitType() {
-        var $submit_type = $('input[name="submit_type"]:checked').val();
+        // let $el_textarea = $('#text_upload textarea');
+        let $submit_type = $('input[name="submit_type"]:checked').val();
+
         if ($submit_type === 'file') {
             $('#file_upload').removeClass('hide');
             $('#text_upload').addClass('hide');
+            // const $current_textarea_val = $el_textarea.val();
+            // $el_textarea.val('');
+            // console.log($current_textarea_val);
+            // console.log($el_textarea.val());
         } else {
             $('#file_upload').addClass('hide');
             $('#text_upload').removeClass('hide');
+            // if ($current_textarea_val !== undefined) {
+            //     $el_textarea.val($current_textarea_val);
+            // }
         }
     }
 

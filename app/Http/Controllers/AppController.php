@@ -81,7 +81,7 @@ class AppController extends Controller
                 }
             }
         }
-        //テキストボックスに入力された場合
+        //テキストボックスに入力された場合($request->input('submit_type') === 'text')
         else {
             $hide_file_upload = 'hide';
             $hide_text_upload = '';
@@ -91,35 +91,86 @@ class AppController extends Controller
          //前回の校正条件の数を引継ぎ
         $this->checkCondition();
 
-         //入力は空文字出ない前提
-        $before_rep = '';
-        $after_rep = '';
+        //nullにならないように、校正元の文を代入しておく
+        $before_rep = $sentence ?? '';
+        $after_rep = $sentence ?? '';
 
          //input入力の条件に従って校正する処理
-        for ($i = 1; $i <= self::$condition_number; $i++) {
-            $before_str = $request->input("before_str$i");
-            $after_str = $request->input("after_str$i");
+        //正規表現を使わない場合
+        if ($request->input('regex_text') !== 'yes') {
+            for ($i = 1; $i <= self::$condition_number; $i++) {
+                $before_str = $request->input("before_str$i");
+                $after_str = $request->input("after_str$i");
 
-            if ($i === 1) {
-                $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $sentence);
-                $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $sentence);
-            } else {
-                $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
-                $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+                //校正条件が空欄の場合はスキップ
+                if (isset($before_str)) {
+                    $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
+                    $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+                }
+            }
+        }
+        //正規表現を使う場合
+        else {
+            for ($i = 1; $i <= self::$condition_number; $i++) {
+                $before_str = $request->input("before_str$i");
+                $after_str = $request->input("after_str$i");
+
+                //校正条件が空欄の場合はスキップ
+                if (isset($before_str)) {
+
+                    //置き換えられる文字列を示す変数を作成（spanタグ内の端っこの空白はspanタグの外に出す。<-以降の置換に影響が出ないように。）
+                    $before_rep = preg_replace($before_str, '<span class="replaced">$0</span>', $before_rep);
+                    $before_rep = str_replace('<span class="replaced"> ', ' <span class="replaced">', $before_rep);
+                    $before_rep = str_replace(' </span>', '</span> ', $before_rep);
+
+                    //置き換えられた文字列を示す変数を作成（spanタグ内の端っこの空白はspanタグの外に出す。<-以降の置換に影響が出ないように。）
+                    $after_rep = preg_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+                    $after_rep = str_replace('<span class="replaced"> ', ' <span class="replaced">', $after_rep);
+                    $after_rep = str_replace(' </span>', '</span> ', $after_rep);
+                }
             }
         }
 
-         //csvファイルの条件に従って校正する処理
+        //csvファイルの条件に従って校正する処理
         if (!empty($request->file('condition_file'))) {
+
             $condition_file_name = $request->file('condition_file')->getClientOriginalName();
             $condition_file = $request->file('condition_file')->storeAs('condition_files', $condition_file_name);
             $fp = fopen(storage_path('app/') . $condition_file, 'r');
 
-            while ($line = fgetcsv($fp, 1024, ',', '"')) {
-                $before_str = $line[0];
-                $after_str = $line[1];
-                $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
-                $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+            //正規表現を使わない場合
+            if ($request->input('regex_csv') !== 'yes') {
+                while ($line = fgetcsv($fp, 1024, ',', '"')) {
+                    $before_str = $line[0];
+                    $after_str = $line[1];
+
+                    //校正条件が空欄の場合はスキップ
+                    if (isset($before_str)) {
+                        $before_rep = str_replace($before_str, '<span class="replaced">' . $before_str . '</span>', $before_rep);
+                        $after_rep = str_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+                    }
+                }
+            }
+            //正規表現を使う場合
+            else {
+                while ($line = fgetcsv($fp, 1024, ',', '"')) {
+                    $before_str = $line[0];
+                    $after_str = $line[1];
+
+                    //校正条件が空欄の場合はスキップ
+                    if (isset($before_str)) {
+
+                        //置き換えられる文字列を示す変数を作成（spanタグ内の端っこの空白はspanタグの外に出す。<-以降の置換に影響が出ないように。）
+                        $before_rep = preg_replace($before_str, '<span class="replaced">$0</span>', $before_rep);
+                        $before_rep = str_replace('<span class="replaced"> ', ' <span class="replaced">', $before_rep);
+                        $before_rep = str_replace(' </span>', '</span> ', $before_rep);
+
+                        //置き換えられた文字列を示す変数を作成（spanタグ内の端っこの空白はspanタグの外に出す。<-以降の置換に影響が出ないように。）
+                        $after_rep = preg_replace($before_str, '<span class="replaced">' . $after_str . '</span>', $after_rep);
+                        $after_rep = str_replace('<span class="replaced"> ', ' <span class="replaced">', $after_rep);
+                        $after_rep = str_replace(' </span>', '</span> ', $after_rep);
+                    }
+                }
             }
         }
 

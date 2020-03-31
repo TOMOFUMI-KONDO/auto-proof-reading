@@ -79,7 +79,11 @@
                     <p>※テキストとcsvの両方で指定することもできます。</p>
                     <section class="text_conditions">
                         <h4>テキストで指定</h4>
-                        <div>
+                        <div class="regex_text">
+                            {{ Form::checkbox('regex_text', 'yes', null, ['id' => 'regex_text']) }}
+                            {{ Form::label('regex_text', '正規表現を使う') }}
+                        </div>
+                        <div class="edit">
                             <div class="buttons">
                                 <button id="erase" type="button">校正条件を全消去</button>
                                 <button id="add" type="button">入力ボックス追加</button>
@@ -101,6 +105,10 @@
                     </section>
                     <section class="csv_conditions">
                         <h4>csvファイルで指定</h4>
+                        <div class="regex_csv">
+                            {{ Form::checkbox('regex_csv', 'yes', null, ['id' => 'regex_csv']) }}
+                            {{ Form::label('regex_csv', '正規表現を使う') }}
+                        </div>
                         <p id="modal_open" class="modal_open">（ <span>csvファイルの形式について</span> ）</p>
                         <div id="modal" class="modal">
                             <div id="modal_bg" class="modal_bg"></div>

@@ -366,7 +366,24 @@ main > article > .form > form > .conditions > .text_conditions {
   margin: 20px auto;
 }
 
-main > article > .form > form > .conditions > .text_conditions > div {
+main > article > .form > form > .conditions > .text_conditions > .regex_text {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .text_conditions > .regex_text > input {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin: 0;
+  vertical-align: middle;
+}
+
+main > article > .form > form > .conditions > .text_conditions > .regex_text > label {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+main > article > .form > form > .conditions > .text_conditions > .edit {
   display: -webkit-box;
   display: flex;
   justify-content: space-around;
@@ -375,14 +392,14 @@ main > article > .form > form > .conditions > .text_conditions > div {
 }
 
 @media screen and (max-width: 1179px) {
-  main > article > .form > form > .conditions > .text_conditions > div {
+  main > article > .form > form > .conditions > .text_conditions > .edit {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
             flex-direction: column-reverse;
   }
 }
 
-main > article > .form > form > .conditions > .text_conditions > div > .buttons {
+main > article > .form > form > .conditions > .text_conditions > .edit > .buttons {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -390,11 +407,11 @@ main > article > .form > form > .conditions > .text_conditions > div > .buttons 
           flex-direction: column;
 }
 
-main > article > .form > form > .conditions > .text_conditions > div > .inputs > div {
+main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > div {
   margin-bottom: 5px;
 }
 
-main > article > .form > form > .conditions > .text_conditions > div > .inputs > div > p {
+main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > div > p {
   display: inline-block;
   width: 49.5%;
   margin: 0;
@@ -403,12 +420,12 @@ main > article > .form > form > .conditions > .text_conditions > div > .inputs >
 }
 
 @media screen and (max-width: 767px) {
-  main > article > .form > form > .conditions > .text_conditions > div > .inputs > div > p {
+  main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > div > p {
     width: 48.9%;
   }
 }
 
-main > article > .form > form > .conditions > .text_conditions > div > .inputs > input {
+main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > input {
   height: 30px;
   width: 46.4%;
   margin-bottom: 5px;
@@ -416,13 +433,13 @@ main > article > .form > form > .conditions > .text_conditions > div > .inputs >
 }
 
 @media screen and (max-width: 1179px) {
-  main > article > .form > form > .conditions > .text_conditions > div > .inputs > input {
+  main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > input {
     width: 42.6%;
     font-size: 16px;
   }
 }
 
-main > article > .form > form > .conditions > .text_conditions > div > .inputs > i {
+main > article > .form > form > .conditions > .text_conditions > .edit > .inputs > i {
   width: 20px;
   text-align: center;
 }
@@ -430,6 +447,23 @@ main > article > .form > form > .conditions > .text_conditions > div > .inputs >
 main > article > .form > form > .conditions > .csv_conditions {
   width: 90%;
   margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > .regex_csv {
+  width: 90%;
+  margin: 20px auto;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > .regex_csv > input {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin: 0;
+  vertical-align: middle;
+}
+
+main > article > .form > form > .conditions > .csv_conditions > .regex_csv > label {
+  vertical-align: middle;
+  font-size: 14px;
 }
 
 main > article > .form > form > .conditions > .csv_conditions > p {

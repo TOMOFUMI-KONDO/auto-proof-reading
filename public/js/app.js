@@ -19237,14 +19237,20 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(document).ready(function () {
   function checkSubmitType() {
+    // let $el_textarea = $('#text_upload textarea');
     var $submit_type = $('input[name="submit_type"]:checked').val();
 
     if ($submit_type === 'file') {
       $('#file_upload').removeClass('hide');
-      $('#text_upload').addClass('hide');
+      $('#text_upload').addClass('hide'); // const $current_textarea_val = $el_textarea.val();
+      // $el_textarea.val('');
+      // console.log($current_textarea_val);
+      // console.log($el_textarea.val());
     } else {
       $('#file_upload').addClass('hide');
-      $('#text_upload').removeClass('hide');
+      $('#text_upload').removeClass('hide'); // if ($current_textarea_val !== undefined) {
+      //     $el_textarea.val($current_textarea_val);
+      // }
     }
   } // ページ読み込み時に、選択されている校正形式（txtファイル, docxファイル, テキスト）を表示する。
 

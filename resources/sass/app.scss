@@ -144,19 +144,6 @@ main {
                                 background-color: lighten($accent-color, 20%);
                                 font-size: 16px;
 
-                                //透明度を強くするのではなく色を濃くしてクリックできることを示す。
-                                //@include mediaQuery(pc) {
-                                //    &:hover {
-                                //        opacity: 1;
-                                //    }
-                                //}
-                                //
-                                //@include mediaQuery(tab) {
-                                //    &:active {
-                                //        opacity: 1;
-                                //    }
-                                //}
-
                                 @include mediaQuery(smp) {
                                     width: 100%;
                                     padding: 10px 0;
@@ -277,7 +264,22 @@ main {
                     > .text_conditions {
                         @include alignCenter();
 
-                        > div {
+                        > .regex_text {
+                            @include alignCenter();
+
+                            > input {
+                                transform: scale(1.5);
+                                margin: 0 ;
+                                vertical-align: middle;
+                            }
+
+                            > label {
+                                vertical-align: middle;
+                                font-size: 14px;
+                            }
+                        }
+
+                        > .edit {
                             display: flex;
                             justify-content: space-around;
                             align-items: center;
@@ -330,6 +332,21 @@ main {
 
                     > .csv_conditions {
                         @include alignCenter();
+
+                        > .regex_csv {
+                            @include alignCenter();
+
+                            > input {
+                                transform: scale(1.5);
+                                margin: 0 ;
+                                vertical-align: middle;
+                            }
+
+                            > label {
+                                vertical-align: middle;
+                                font-size: 14px;
+                            }
+                        }
 
                         > p {
                             @include alignCenter();
