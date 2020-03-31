@@ -16,7 +16,8 @@
         "laravelcollective/html": "^6.0",
         "ext-zip": "*",
         "ext-dom": "*",
-        "phpoffice/phpword": "v0.16.*"
+        "phpoffice/phpword": "v0.16.*",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
