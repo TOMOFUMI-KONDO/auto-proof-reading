@@ -107,7 +107,7 @@ $(document).ready(function() {
 
     $body = $('body');
     //モーダルの表示切替
-    $('#modal_open').on('click', function () {
+    $('#modal_open span').on('click', function () {
         $body.css({
             'overflow': 'hidden',
         });

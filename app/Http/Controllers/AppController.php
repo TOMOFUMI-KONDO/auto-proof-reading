@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AppRequest;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\MessageBag;
 use Illuminate\View\View;
 use App\StringProcessing;
 use Carbon\Carbon;
@@ -37,7 +38,7 @@ class AppController extends Controller
 
     /**
      * @param AppRequest $request
-     * @return Factory|View
+     * @return Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|View
      */
     //フォームの内容のバリデーションはAppRequestで行う。
     public function post(AppRequest $request) {
@@ -48,6 +49,7 @@ class AppController extends Controller
 
         //ファイルをアップロードされた場合
         if ($request->input('submit_type') === 'file') {
+
             $hide_file_upload = '';
             $hide_text_upload = 'hide';
 
@@ -86,6 +88,15 @@ class AppController extends Controller
             $hide_file_upload = 'hide';
             $hide_text_upload = '';
             $sentence = $request->input('sentence'); //テキストエリアへの入力を取得
+
+            //textareaに入力がない場合をここでチェックする。
+            if (is_null($sentence)) {
+                $message = new MessageBag();
+                $message->add('sentence', '校正する文章が入力されていません。');
+                return redirect('/')
+                    ->withErrors($message)
+                    ->withInput();
+            }
         }
 
          //前回の校正条件の数を引継ぎ

@@ -56,14 +56,15 @@
                     <h3>校正する文章の入力<br class="smp" /><span>（ファイルサイズは1.5MBまで）</span></h3>
                     @if ($errors->has('sentence'))
                         <p class="error bold">{{ $errors->first('sentence') }}</p>
+{{--                        <p class="error bold">{{ $errors->first('sentence') }}</p>--}}
                     @endif
                     <div id="submit_type" class="submit_type">
                         <div>
-                            {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file'])}}
+                            {{ Form::radio('submit_type', 'file', true, ['id' => 'submit_type_file']) }}
                             {{ Form::label('submit_type_file', 'ファイルを提出') }}
                         </div>
                         <div>
-                            {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text'])}}
+                            {{ Form::radio('submit_type', 'text', false, ['id' => 'submit_type_text']) }}
                             {{ Form::label('submit_type_text', 'テキストを入力') }}
                         </div>
                     </div>
@@ -127,7 +128,7 @@
                         </div>
                     </section>
                 </section>
-                {{ Form::submit('校正する', ['class' => 'submit'])}}
+                {{ Form::submit('校正する', ['class' => 'submit']) }}
             {{ Form::close() }}
         </section>
     </article>
