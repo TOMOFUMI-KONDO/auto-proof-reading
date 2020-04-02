@@ -7,7 +7,7 @@
       'jsFiles' => ['app', 'plugin/toastr/toastr.min']]
     )
     @endcomponent
-    
+
     {{--        コントローラから渡された変数をjavascriptに渡すために変数を定義して値を代入--}}
     <script type="text/javascript">
         let $app_env = "{{ $app_env }}";
