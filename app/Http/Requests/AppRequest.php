@@ -51,7 +51,9 @@ class AppRequest extends FormRequest
 
     public function withValidator(Validator $validator) {
         //sumit_typeがfileの時に、ファイルがアップロードされているかをチェック
-        $validator->sometimes('sentence', 'file', function ($input) {
+        //php.iniのupload_file_sizeが2Mなので、超えないように。
+        //扱えるファイル形式は.txtと.docxのみ
+        $validator->sometimes('sentence', 'bail|file|max:1500|mimes:txt,docx', function ($input) {
            return  $input->submit_type === 'file';
         });
 
@@ -61,11 +63,5 @@ class AppRequest extends FormRequest
 //        $validator->sometimes('sentence', 'string', function ($input) {
 //           return $input->submit_type === 'text';
 //        });
-
-        //php.iniのupload_file_sizeが2Mなので、超えないように。
-        //扱えるファイル形式は.txtと.docxのみ
-        $validator->sometimes('sentence', 'bail|max:1500|mimes:txt,docx', function ($input) {
-            return is_file($input->sentence);
-        });
     }
 }

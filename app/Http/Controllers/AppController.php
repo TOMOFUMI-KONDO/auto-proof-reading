@@ -53,15 +53,17 @@ class AppController extends Controller
             $hide_file_upload = '';
             $hide_text_upload = 'hide';
 
+            //一時ファイルのパスを取得
+            $file_path = $request->file('sentence')->getRealPath();
+
             //.txtファイルの場合
             if ($request->file('sentence')->extension() === "txt") {
-                $sentence = file_get_contents($request->file('sentence')->getRealPath()); //ファイル形式で取得
+                $sentence = file_get_contents($file_path); //ファイル形式で取得
             }
             //.docxファイルの場合
             else {
                 $is_docx = true; //wordファイルが提出されたことを示すフラグを立てる。
                 $sentence = '';
-                $file_path = $request->file('sentence')->getRealPath();
                 $zip = new \ZipArchive();
 
                 if ($zip->open($file_path) === true) {
